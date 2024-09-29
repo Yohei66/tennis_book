@@ -28,10 +28,11 @@ day = three_months_later.day
 id = "52003401"
 password = "1234"
 
-places = {'大沼公園グラウンド', '立沼テニス場'}
-
-# 対象の曜日を設定（木、土、日、祝）
-weekdays = {'木', '土', '日', '祝'}
+# 施設と対象曜日の設定
+facility_days = {
+    '大沼公園グラウンド': [3, 5, 6],  # 木、土、日
+    '立沼テニス場': [2, 4, 5],  # 水、金、土
+}
 
 # WebDriverのオプションを設定
 options = Options()
@@ -65,12 +66,14 @@ driver.find_element(By.ID, "ucButtonList_dgButtonList_ctl03_chkSelectRight").cli
 driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 
-for place in places:
-    element = driver.find_element(By.XPATH, "//input[@value='" + place + "']")
+# 施設の選択
+for facility_name in facility_days.keys():
+    element = driver.find_element(By.XPATH, "//input[@value='" + facility_name + "']")
     element.click()
 
 driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 
+# 日付の入力
 driver.find_element(By.ID, "txtYear").send_keys(Keys.CONTROL + "a")
 driver.find_element(By.ID, "txtYear").send_keys(Keys.DELETE)
 driver.find_element(By.ID, "txtYear").send_keys(year)
@@ -83,16 +86,21 @@ driver.find_element(By.ID, "txtDay").send_keys("1")
 
 driver.find_element(By.ID, "rbtnMonth").click()
 
-# 曜日のチェックボックスを選択
-for weekday in weekdays:
-    driver.find_element(By.XPATH, "//table[@id='Table6']/tbody/tr/td/input[@value='" + weekday + "']").click()
+# 曜日のチェックボックスは全て選択（施設ごとに処理するため）
+all_weekdays = ['月', '火', '水', '木', '金', '土', '日', '祝']
+for weekday in all_weekdays:
+    checkbox = driver.find_element(By.XPATH, "//table[@id='Table6']/tbody/tr/td/input[@value='" + weekday + "']")
+    if checkbox.is_selected():
+        continue
+    checkbox.click()
+
 driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 
 # 待機オブジェクトを作成
 wait = WebDriverWait(driver, 10)
 
-def get_facility_element():
-    facility_xpath = "//span[contains(@id, '_lblShisetsu') and text()='大沼公園グラウンド']/ancestor::table[contains(@id, '_tpItem')]"
+def get_facility_element(facility_name):
+    facility_xpath = f"//span[contains(@id, '_lblShisetsu') and text()='{facility_name}']/ancestor::table[contains(@id, '_tpItem')]"
     return driver.find_element(By.XPATH, facility_xpath)
 
 def get_dg_table(facility_element):
@@ -105,31 +113,38 @@ current_month = three_months_later.month
 # ターゲットの月の日数を取得
 num_days = calendar.monthrange(current_year, current_month)[1]
 
-# 木土日祝の日時を取得
-dates_to_click = []
-for day in range(1, num_days + 1):
-    date = datetime(current_year, current_month, day)
-    weekday = date.weekday()  # 月曜日=0, 日曜日=6
-    if weekday in [3, 5, 6] or jpholiday.is_holiday(date):
-        dates_to_click.append(date)
+# 各施設ごとに処理
+for facility_name, days in facility_days.items():
+    # 施設要素を取得
+    facility_element = get_facility_element(facility_name)
+    dg_table = get_dg_table(facility_element)
 
-# 施設要素を取得
-facility_element = get_facility_element()
-dg_table = get_dg_table(facility_element)
+    # '大沼公園グラウンド'の場合は祝日を含める
+    include_holidays = facility_name == '大沼公園グラウンド'
 
-# 対象の日付の要素をクリック
-for date in dates_to_click:
-    date_str = date.strftime('%Y%m%d')
-    date_id = '_b' + date_str
-    try:
-        date_element = dg_table.find_element(By.XPATH, f".//a[contains(@id, '{date_id}')]")
-        date_element.click()
-        time.sleep(0.5)  # 必要に応じて調整
-    except NoSuchElementException:
-        print(f"{date_str} の要素が見つかりませんでした。")
+    # 対象の日付を取得
+    dates_to_click = []
+    for day in range(1, num_days + 1):
+        date = datetime(current_year, current_month, day)
+        weekday = date.weekday()  # 月曜日=0, 日曜日=6
+        if weekday in days or (include_holidays and jpholiday.is_holiday(date)):
+            dates_to_click.append(date)
+
+    # 対象の日付の要素をクリック
+    for date in dates_to_click:
+        date_str = date.strftime('%Y%m%d')
+        date_id = '_b' + date_str
+        try:
+            date_element = dg_table.find_element(By.XPATH, f".//a[contains(@id, '{date_id}')]")
+            date_element.click()
+            time.sleep(0.5)  # 必要に応じて調整
+        except NoSuchElementException:
+            print(f"{facility_name} の {date_str} の要素が見つかりませんでした。")
 
 # ここで必要な処理を続けます
 # 例：選択を確認して次のページへ進むなど
 
 # ブラウザを閉じる場合は以下をアンコメント
 # driver.quit()
+while True:
+    pass
