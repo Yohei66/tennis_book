@@ -100,8 +100,11 @@ driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 wait = WebDriverWait(driver, 10)
 
 def get_facility_element(facility_name):
-    facility_xpath = f"//span[contains(@id, '_lblShisetsu') and text()='{facility_name}']/ancestor::table[contains(@id, '_tpItem')]"
-    return driver.find_element(By.XPATH, facility_xpath)
+    facility_xpath = (
+        f"//span[contains(@id, '_lblShisetsu') and contains(text(), '{facility_name}')]/ancestor::table[contains(@id, '_tpItem')]"
+        f"|//a[contains(@id, '_lnkShisetsu') and contains(text(), '{facility_name}')]/ancestor::table[contains(@id, '_tpItem')]"
+    )
+    return wait.until(EC.presence_of_element_located((By.XPATH, facility_xpath)))
 
 def get_dg_table(facility_element):
     return facility_element.find_element(By.XPATH, ".//table[contains(@id, '_dgTable')]")
@@ -115,32 +118,39 @@ num_days = calendar.monthrange(current_year, current_month)[1]
 
 # 各施設ごとに処理
 for facility_name, days in facility_days.items():
-    # 施設要素を取得
-    facility_element = get_facility_element(facility_name)
-    dg_table = get_dg_table(facility_element)
+    try:
+        print(f"{facility_name} 開始。")
+        # 施設要素を取得
+        facility_element = get_facility_element(facility_name)
+        print(f"facility_element:{facility_element}")
+        dg_table = get_dg_table(facility_element)
+        print(f"dg_table:{dg_table}")
 
-    # '大沼公園グラウンド'の場合は祝日を含める
-    include_holidays = facility_name == '大沼公園グラウンド'
+        # '大沼公園グラウンド'の場合は祝日を含める
+        include_holidays = facility_name == '大沼公園グラウンド'
 
-    # 対象の日付を取得
-    dates_to_click = []
-    for day in range(1, num_days + 1):
-        date = datetime(current_year, current_month, day)
-        weekday = date.weekday()  # 月曜日=0, 日曜日=6
-        if weekday in days or (include_holidays and jpholiday.is_holiday(date)):
-            dates_to_click.append(date)
+        # 対象の日付を取得
+        dates_to_click = []
+        for day in range(1, num_days + 1):
+            date = datetime(current_year, current_month, day)
+            weekday = date.weekday()
+            if weekday in days or (include_holidays and jpholiday.is_holiday(date)):
+                dates_to_click.append(date)
 
-    # 対象の日付の要素をクリック
-    for date in dates_to_click:
-        date_str = date.strftime('%Y%m%d')
-        date_id = '_b' + date_str
-        try:
-            date_element = dg_table.find_element(By.XPATH, f".//a[contains(@id, '{date_id}')]")
-            date_element.click()
-            time.sleep(0.5)  # 必要に応じて調整
-        except NoSuchElementException:
-            print(f"{facility_name} の {date_str} の要素が見つかりませんでした。")
-
+        # 対象の日付の要素をクリック
+        for date in dates_to_click:
+            date_str = date.strftime('%Y%m%d')
+            date_id = '_b' + date_str
+            try:
+                date_element = dg_table.find_element(By.XPATH, f".//a[contains(@id, '{date_id}')]")
+                date_element.click()
+                time.sleep(0.5)  # 必要に応じて調整
+            except NoSuchElementException:
+                print(f"{facility_name} の {date_str} の要素が見つかりませんでした。")
+        print(f"{facility_name}完了")
+    except NoSuchElementException:
+        print(f"{facility_name} の施設要素が見つかりませんでした。")
+        continue
 # ここで必要な処理を続けます
 # 例：選択を確認して次のページへ進むなど
 
