@@ -1,0 +1,2565 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0066)https://www.pf489.com/kasukabe/web/Wg_ShisetsubetsuAkiJoukyou.aspx -->
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>
+		施設別空き状況
+	</title>
+	<meta content="True" name="vs_showGrid">
+	<meta content="Microsoft Visual Studio 7.0" name="GENERATOR">
+	<meta content="C#" name="CODE_LANGUAGE">
+	<meta content="JavaScript" name="vs_defaultClientScript">
+	<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
+	<meta name="viewport" content="width=1280">
+	<link href="./施設別空き状況_10月_files/StyleSheet.css" type="text/css" rel="stylesheet">
+	<link href="./施設別空き状況_10月_files/WebResource.axd" type="text/css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./施設別空き状況_10月_files/eGRStyle.css">
+	<link rel="stylesheet" type="text/css" href="./施設別空き状況_10月_files/RoundedStyle.css">
+	<script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
+</head>
+
+<body onload="InitFocusLinkButton()" bgcolor="#ffffff">
+	<form name="Form1" method="post" action="https://www.pf489.com/kasukabe/web/Wg_ShisetsubetsuAkiJoukyou.aspx"
+		id="Form1">
+		<div>
+			<input type="hidden" name="h_Logout" id="h_Logout" value="False">
+			<input type="hidden" name="h_SelectedCnt" id="h_SelectedCnt" value="0">
+			<input type="hidden" name="h_SelectedMax" id="h_SelectedMax" value="0">
+			<input type="hidden" name="h_SelectedMaxAlert" id="h_SelectedMaxAlert" value="選択は0件までしかできません。">
+			<input type="hidden" name="tsManager_HiddenField" id="tsManager_HiddenField"
+				value=";;AjaxControlToolkit, Version=1.0.20229.20821, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e:ja-JP:2a96163e-73cb-4a2c-a93c-c62f3b5caf83:865923e8:9b7907bc:411fea1c:e7c87f07:91bd373d:bbfda34c:30a78ec5:9349f837:d4245214">
+			<input type="hidden" name="h_StringSelect" id="h_StringSelect" value="選択">
+			<input type="hidden" name="h_StringTyuusen" id="h_StringTyuusen" value="抽選">
+			<input type="hidden" name="h_StringTeiki" id="h_StringTeiki" value="定期">
+			<input type="hidden" name="h_GradientButtonFlg" id="h_GradientButtonFlg" value="true">
+			<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+			<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+			<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+				value="/wEPDwULLTExMDAwMTIxNTMPZBYCAgMPZBYCAgUPFgIeBXN0eWxlBQtXSURUSDoxMDAlOxYCZg9kFgRmDxYCHgVjbGFzcwUQdGRTaWRlTWVudU5vcm1hbGQCAQ9kFgICAQ8WAh8ABZgBQkFDS0dST1VORC1QT1NJVElPTjpyaWdodCBib3R0b207QkFDS0dST1VORC1BVFRBQ0hNRU5UOmZpeGVkO0JBQ0tHUk9VTkQtSU1BR0U6dXJsKGltYWdlL2VHUk1hcmsuZ2lmKTtXSURUSDoxMDAlO0JBQ0tHUk9VTkQtUkVQRUFUOm5vLXJlcGVhdDtIRUlHSFQ6MTAwJTsWAmYPZBYCZg9kFgICAQ8WAh8ABWRCQUNLR1JPVU5ELVBPU0lUSU9OOnJpZ2h0IGJvdHRvbTtCQUNLR1JPVU5ELUFUVEFDSE1FTlQ6Zml4ZWQ7V0lEVEg6MTAwJTtCQUNLR1JPVU5ELVJFUEVBVDpuby1yZXBlYXQ7FgwCBQ9kFg4CAQ8PFgYeCUZvbnRfU2l6ZSgqIlN5c3RlbS5XZWIuVUkuV2ViQ29udHJvbHMuRm9udFVuaXQEMTJwdB4JRm9udF9Cb2xkZx4EXyFTQgKAGGRkAgUPDxYIHwIoKwQEMTJwdB8DZx4FV2lkdGgbAAAAAAAAWUABAAAAHwQCgBpkZAILDw8WAh4HVmlzaWJsZWhkZAINDxAPFgIfBmhkZBYBAgNkAg8PDxYCHwZoZGQCEQ8QDxYCHwZoZGQWAQIDZAITDxYCHwAFDWRpc3BsYXk6bm9uZTsWBmYPZBYCAgEPDxYCHwZoZGQCAw9kFgICAQ9kFgJmD2QWAgIBDw8WBh8CKCsEBDEwcHQeBFRleHQFCeWFqOino+mZpB8EAoAIZGQCBQ9kFgICAQ9kFgJmD2QWBAIDDw8WCB8HZR4JQmFja0NvbG9yCl8eB0VuYWJsZWRoHwQCCGRkAgUPDxYIHwdlHwgKXx8JaB8EAghkZAIHDw8WBB8CKCsEBDEycHQfBAKACGRkAgkPDxYEHwIoKwQEMTBwdB8EAoAIZGQCDQ8PFgIfBmhkZAIRDw8WBB8CKCsEBDEwcHQfBAKACGRkAhMPPCsACQEADxYEHghEYXRhS2V5cxYAHgtfIUl0ZW1Db3VudAICZGQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgoFGXVjVGVybVNldHRpbmckYnRuQ2FsZW5kYXIFF3VjVGVybVNldHRpbmckY2JsV2VlayQwBRd1Y1Rlcm1TZXR0aW5nJGNibFdlZWskMQUXdWNUZXJtU2V0dGluZyRjYmxXZWVrJDIFF3VjVGVybVNldHRpbmckY2JsV2VlayQzBRd1Y1Rlcm1TZXR0aW5nJGNibFdlZWskNAUXdWNUZXJtU2V0dGluZyRjYmxXZWVrJDUFF3VjVGVybVNldHRpbmckY2JsV2VlayQ2BRd1Y1Rlcm1TZXR0aW5nJGNibFdlZWskNwUXdWNUZXJtU2V0dGluZyRjYmxXZWVrJDfIsILQZ6nVuLgmtiFfyzcP7yeVRw==">
+		</div>
+
+		<script type="text/javascript">
+			//<![CDATA[
+			var theForm = document.forms['Form1'];
+			if (!theForm) {
+				theForm = document.Form1;
+			}
+			function __doPostBack(eventTarget, eventArgument) {
+				if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+					theForm.__EVENTTARGET.value = eventTarget;
+					theForm.__EVENTARGUMENT.value = eventArgument;
+					theForm.submit();
+				}
+			}
+			//]]>
+		</script>
+
+
+		<script src="./施設別空き状況_10月_files/WebResource(1).axd" type="text/javascript"></script>
+
+		<script language="JavaScript" src="./施設別空き状況_10月_files/OecButton.js.ダウンロード"></script>
+		<script language="JavaScript" src="./施設別空き状況_10月_files/OecBody.js.ダウンロード"></script>
+		<script language="JavaScript" src="./施設別空き状況_10月_files/OecLinkButton.js.ダウンロード"></script>
+		<script language="javascript">
+			<!--
+				function lbF(linkButton) {
+					linkButton.style.backgroundColor = 'DarkOrange';
+				}
+				function lbB(linkButton) {
+					linkButton.style.backgroundColor = '';
+				}
+				function SetDefaultLinkColor(linkButton) {
+					linkButton.style.color = '#0000ff';
+				}
+				function SetVisitedLinkColor(linkButton) {
+					linkButton.style.color = '#ff0000';
+				}
+			// -->
+		</script>
+		<script language="JavaScript" src="./施設別空き状況_10月_files/OecRadioButton.js.ダウンロード"></script>
+		<script language="JavaScript">var dialog_flg = 0;</script>
+		<script language="JavaScript" src="./施設別空き状況_10月_files/OecBody.js.ダウンロード"></script>
+		<script type="text/javascript">
+			//<![CDATA[
+			var __cultureInfo = '{"name":"ja-JP","numberFormat":{"CurrencyDecimalDigits":0,"CurrencyDecimalSeparator":".","IsReadOnly":true,"CurrencyGroupSizes":[3],"NumberGroupSizes":[3],"PercentGroupSizes":[3],"CurrencyGroupSeparator":",","CurrencySymbol":"¥","NaNSymbol":"NaN (非数値)","CurrencyNegativePattern":1,"NumberNegativePattern":1,"PercentPositivePattern":1,"PercentNegativePattern":1,"NegativeInfinitySymbol":"-∞","NegativeSign":"-","NumberDecimalDigits":2,"NumberDecimalSeparator":".","NumberGroupSeparator":",","CurrencyPositivePattern":0,"PositiveInfinitySymbol":"+∞","PositiveSign":"+","PercentDecimalDigits":2,"PercentDecimalSeparator":".","PercentGroupSeparator":",","PercentSymbol":"%","PerMilleSymbol":"‰","NativeDigits":["0","1","2","3","4","5","6","7","8","9"],"DigitSubstitution":1},"dateTimeFormat":{"AMDesignator":"午前","Calendar":{"MinSupportedDateTime":"\/Date(-62135596800000)\/","MaxSupportedDateTime":"\/Date(253402268399999)\/","AlgorithmType":1,"CalendarType":1,"Eras":[1],"TwoDigitYearMax":2029,"IsReadOnly":true},"DateSeparator":"/","FirstDayOfWeek":0,"CalendarWeekRule":0,"FullDateTimePattern":"yyyy\u0027年\u0027M\u0027月\u0027d\u0027日\u0027 H:mm:ss","LongDatePattern":"yyyy\u0027年\u0027M\u0027月\u0027d\u0027日\u0027","LongTimePattern":"H:mm:ss","MonthDayPattern":"M\u0027月\u0027d\u0027日\u0027","PMDesignator":"午後","RFC1123Pattern":"ddd, dd MMM yyyy HH\u0027:\u0027mm\u0027:\u0027ss \u0027GMT\u0027","ShortDatePattern":"yyyy/MM/dd","ShortTimePattern":"H:mm","SortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss","TimeSeparator":":","UniversalSortableDateTimePattern":"yyyy\u0027-\u0027MM\u0027-\u0027dd HH\u0027:\u0027mm\u0027:\u0027ss\u0027Z\u0027","YearMonthPattern":"yyyy\u0027年\u0027M\u0027月\u0027","AbbreviatedDayNames":["日","月","火","水","木","金","土"],"ShortestDayNames":["日","月","火","水","木","金","土"],"DayNames":["日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日"],"AbbreviatedMonthNames":["1","2","3","4","5","6","7","8","9","10","11","12",""],"MonthNames":["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月",""],"IsReadOnly":true,"NativeCalendarName":"西暦 (日本語)","AbbreviatedMonthGenitiveNames":["1","2","3","4","5","6","7","8","9","10","11","12",""],"MonthGenitiveNames":["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月",""]}}';//]]>
+		</script>
+
+		<script src="./施設別空き状況_10月_files/ScriptResource.axd" type="text/javascript"></script>
+		<script src="./施設別空き状況_10月_files/ScriptResource(1).axd" type="text/javascript"></script>
+		<script src="./施設別空き状況_10月_files/Wg_ShisetsubetsuAkiJoukyou.aspx" type="text/javascript"></script>
+		<div>
+
+			<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="9D7D9603">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241001"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241001" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241002"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241002" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241003"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241003" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241004"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241004" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241005"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241005" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241006"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241006" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241007"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241007" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241008"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241008" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241009"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241009" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241010"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241010" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241011"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241011" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241012"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241012" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241013"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241013" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241014"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241014" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241015"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241015" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241016"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241016" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241017"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241017" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241018"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241018" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241019"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241019" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241020"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241020" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241021"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241021" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241022"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241022" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241023"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241023" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241024"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241024" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241025"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241025" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241026"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241026" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241027"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241027" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241028"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241028" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241029"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241029" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241030"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241030" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241031"
+				id="h_dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241031" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_Migrated_lnkPrevSpan"
+				id="h_dlRepeat_ctl00_tpItem_Migrated_lnkPrevSpan" value="&lt; 前の期間を表示">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_lnkBackLeft" id="h_dlRepeat_ctl00_tpItem_lnkBackLeft"
+				value="&lt;&lt; 戻る">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_lnkNextLeft" id="h_dlRepeat_ctl00_tpItem_lnkNextLeft"
+				value="次へ &gt;&gt;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_lnkBackRight" id="h_dlRepeat_ctl00_tpItem_lnkBackRight"
+				value="&lt;&lt; 戻る">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_lnkNextRight" id="h_dlRepeat_ctl00_tpItem_lnkNextRight"
+				value="次へ &gt;&gt;">
+			<input type="hidden" name="h_dlRepeat_ctl00_tpItem_Migrated_lnkNextSpan"
+				id="h_dlRepeat_ctl00_tpItem_Migrated_lnkNextSpan" value="次の期間を表示 &gt;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241001"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241001" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241002"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241002" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241003"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241003" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241004"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241004" value="&amp;nbsp;&amp;nbsp;○&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241005"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241005" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241006"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241006" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241007"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241007" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241008"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241008" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241009"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241009" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241010"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241010" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241011"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241011" value="&amp;nbsp;&amp;nbsp;○&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241012"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241012" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241013"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241013" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241014"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241014" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241015"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241015" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241016"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241016" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241017"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241017" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241018"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241018" value="&amp;nbsp;&amp;nbsp;○&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241019"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241019" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241020"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241020" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241021"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241021" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241022"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241022" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241023"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241023" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241024"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241024" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241025"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241025" value="&amp;nbsp;&amp;nbsp;○&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241026"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241026" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241027"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241027" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241028"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241028" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241029"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241029" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241030"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241030" value="&amp;nbsp;&amp;nbsp;×&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241031"
+				id="h_dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241031" value="&amp;nbsp;&amp;nbsp;△&amp;nbsp;&amp;nbsp;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_Migrated_lnkPrevSpan"
+				id="h_dlRepeat_ctl01_tpItem_Migrated_lnkPrevSpan" value="&lt; 前の期間を表示">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_lnkBackLeft" id="h_dlRepeat_ctl01_tpItem_lnkBackLeft"
+				value="&lt;&lt; 戻る">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_lnkNextLeft" id="h_dlRepeat_ctl01_tpItem_lnkNextLeft"
+				value="次へ &gt;&gt;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_lnkBackRight" id="h_dlRepeat_ctl01_tpItem_lnkBackRight"
+				value="&lt;&lt; 戻る">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_lnkNextRight" id="h_dlRepeat_ctl01_tpItem_lnkNextRight"
+				value="次へ &gt;&gt;">
+			<input type="hidden" name="h_dlRepeat_ctl01_tpItem_Migrated_lnkNextSpan"
+				id="h_dlRepeat_ctl01_tpItem_Migrated_lnkNextSpan" value="次の期間を表示 &gt;">
+			<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION"
+				value="/wEWbAKEtoK9DgK+ya+NDAL3zKuUDwL9ofEWAvfWqo8IAuKEzmUCmIvl9AIC2bq/gw4CvPf3uwcCl4Tusw0Cn/zVyQECxZaV1gcC8KrbugkC2qvU/wsCv8K26gECpNmY1QcCifD6vw0C7obdqgMC052/lQkCuLShgA8CncuD6wQC9M7TpwgC7ZagiQcCpZ+IwQ4C8p2opQwC2vvdeAKjqMe9CwKK1LkHAqTz2eoDApb/060JApX/060JApT/060JApv/060JApr/060JApn/060JApj/060JAp//060JAp7/060JApf/54gCApb/54gCApX/54gCApT/54gCApv/54gCApr/54gCApn/54gCApj/54gCAp//54gCAp7/54gCApf/q/cHApb/q/cHApX/q/cHApT/q/cHApv/q/cHApr/q/cHApn/q/cHApj/q/cHAp//q/cHAp7/q/cHApf/v1IClv+/UgLYyYy7DQKA9vjnDgLH6b4ZAriH15kMAvfE8zMCscjp8wkCxeepjgoCn/nm3Q0CnPnm3Q0Cnfnm3Q0Covnm3Q0Co/nm3Q0CoPnm3Q0Cofnm3Q0Clvnm3Q0Cl/nm3Q0Cnvn6uAYCn/n6uAYCnPn6uAYCnfn6uAYCovn6uAYCo/n6uAYCoPn6uAYCofn6uAYClvn6uAYCl/n6uAYCnvm+pwwCn/m+pwwCnPm+pwwCnfm+pwwCovm+pwwCo/m+pwwCoPm+pwwCofm+pwwClvm+pwwCl/m+pwwCnvnSggUCn/nSggUCxfupqQ0CxPjbogIC9+6h1AMC9ImK4w8Ch8rm/AMCovqG2gkC+4Dv7AECoNOADgLy9PyYAQLw07X8BXFSel2ESu6EFOVuw7AqR6WVNgM+">
+		</div>
+		<script type="text/javascript">
+			//<![CDATA[
+			Sys.WebForms.PageRequestManager._initialize('tsManager', document.getElementById('Form1'));
+			Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tucTermSetting$updpnlWeek', 'tucTermSetting$updpnlWeekAll', 'tucTermSetting$updpnlTime'], ['ucTermSetting$btnWeekAll'], [], 90);
+			//]]>
+		</script>
+
+		<table style="width: 100%; border-width: 0;">
+			<tbody>
+				<!-- <tr>
+					<td>
+
+						<div class="HeaderMainDiv">
+							<table id="ucPCHeader_TableHeader" cellspacing="1" cellpadding="1" border="0" width="100%">
+								<tbody>
+									<tr class="HeaderMain">
+										<td nowrap="nowrap">
+											<span id="ucPCHeader_lblTitle1"
+												style="font-size:24pt;font-weight:bold;">春日部市</span>
+
+											<span id="ucPCHeader_lblTitle2"
+												style="font-size:14pt;font-weight:bold;">公共施設予約システム</span>
+
+											<span id="ucPCHeader_lblTitle3"
+												style="font-size:24pt;font-weight:bold;">空き照会・予約の申込 施設別空き状況</span>
+										</td>
+									</tr>
+									<tr>
+										<td nowrap="nowrap" class="HeaderSub"></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+
+					</td>
+				</tr> -->
+				<tr>
+					<td>
+						<table id="TableBody" cellspacing="2" cellpadding="2" width="100%" border="0"
+							style="WIDTH:100%;">
+							<tbody>
+								<tr>
+									<td id="TdSideMenu" valign="top" class="tdSideMenuNormal">
+										<table id="ucPCSideMenuBody_DataListBody" cellspacing="0" cellpadding="1"
+											border="0" style="color:Black;width:210px;border-collapse:collapse;">
+											<tbody>
+												<tr>
+													<td align="right" valign="middle" style="color:White;">
+
+														<table id="Table2" cellspacing="0" cellpadding="3" width="100%"
+															border="0">
+															<tbody>
+																<tr>
+																	<td valign="middle">
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl00_lblName"
+																			style="TEXT-ALIGN:Left;display:inline-block;color:Black;font-size:12pt;font-weight:bold;width:100%;">山下
+																			陽平さん</span>
+																	</td>
+																</tr>
+																<tr>
+																	<td valign="middle">
+																		<input type="submit"
+																			name="ucPCSideMenuBody$DataListBody$ctl00$btnMessageTsuuchi"
+																			value="メッセージ（通知）"
+																			id="ucPCSideMenuBody_DataListBody_ctl00_btnMessageTsuuchi"
+																			tabindex="-1" class="gradient_Blue10"
+																			focusedborderstyle="" focusedbordercolor=""
+																			borderstyle="" bordercolor="" pb="True"
+																			onclick="NoOnBeforeUnload();return Button_OnClick(this);"
+																			onfocus="Button_OnFocus(this)"
+																			onblur="Button_OnBlur(this)"
+																			onmouseover="Button_OnMouseOver(this)"
+																			onmouseout="Button_OnMouseOut(this)"
+																			hidefocus="true"
+																			style="cursor:hand;font-size:10pt;font-weight:bold;width:100%;"
+																			control-id="ControlID-1">
+																	</td>
+																</tr>
+																<tr>
+																	<td valign="middle">
+																		<p>
+																			<input type="submit"
+																				name="ucPCSideMenuBody$DataListBody$ctl00$btnLogout"
+																				value="ログアウトする"
+																				onclick="NoOnBeforeUnload(); return showOKCancelDialog();"
+																				id="ucPCSideMenuBody_DataListBody_ctl00_btnLogout"
+																				tabindex="-1" class="gradient_Blue10"
+																				focusedborderstyle=""
+																				focusedbordercolor="" borderstyle=""
+																				bordercolor="" pb="True"
+																				onfocus="Button_OnFocus(this)"
+																				onblur="Button_OnBlur(this)"
+																				onmouseover="Button_OnMouseOver(this)"
+																				onmouseout="Button_OnMouseOut(this)"
+																				hidefocus="true"
+																				style="cursor:hand;font-size:10pt;font-weight:bold;width:100%;"
+																				control-id="ControlID-2">
+																		</p>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														<table id="ucPCSideMenuBody_DataListBody_ctl00_tblShori"
+															cellspacing="0" cellpadding="0" width="100%" border="0">
+															<tbody>
+																<tr>
+																	<td width="5%"></td>
+																	<td valign="middle" width="40%">
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl00_lblSyoriGuide"
+																			style="TEXT-ALIGN:Center;display:inline-block;font-size:12pt;font-weight:bold;width:100%;">処理ガイド</span>
+																	</td>
+																	<td valign="middle" width="35%">
+																		<input type="submit"
+																			name="ucPCSideMenuBody$DataListBody$ctl00$btnDisableSideMenu"
+																			value="非表示"
+																			id="ucPCSideMenuBody_DataListBody_ctl00_btnDisableSideMenu"
+																			tabindex="-1" class="gradient_Blue10"
+																			focusedborderstyle="" focusedbordercolor=""
+																			borderstyle="" bordercolor="" pb="True"
+																			onclick="NoOnBeforeUnload();return Button_OnClick(this);"
+																			onfocus="Button_OnFocus(this)"
+																			onblur="Button_OnBlur(this)"
+																			onmouseover="Button_OnMouseOver(this)"
+																			onmouseout="Button_OnMouseOut(this)"
+																			hidefocus="true"
+																			style="cursor:hand;font-size:10pt;font-weight:bold;"
+																			control-id="ControlID-3">
+																	</td>
+																	<td width="20%"></td>
+																</tr>
+															</tbody>
+														</table>
+
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl02_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+																		<a onclick="return Double_ClickCheck();"
+																			id="ucPCSideMenuBody_DataListBody_ctl02_ucPCSideMenuItem_dataListItem_ctl00_lnkBtnGoPage"
+																			tabindex="-1" focusedbordercolor="#ff8c00"
+																			href="javascript:__doPostBack(&#39;ucPCSideMenuBody$DataListBody$ctl02$ucPCSideMenuItem$dataListItem$ctl00$lnkBtnGoPage&#39;,&#39;&#39;)"
+																			style="display:inline-block;color:Blue;font-size:11pt;font-weight:bold;height:100%;width:100%;">▼施設検索</a>
+
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl03_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+																		<a onclick="return Double_ClickCheck();"
+																			id="ucPCSideMenuBody_DataListBody_ctl03_ucPCSideMenuItem_dataListItem_ctl00_lnkBtnGoPage"
+																			tabindex="-1" focusedbordercolor="#ff8c00"
+																			href="javascript:__doPostBack(&#39;ucPCSideMenuBody$DataListBody$ctl03$ucPCSideMenuItem$dataListItem$ctl00$lnkBtnGoPage&#39;,&#39;&#39;)"
+																			style="display:inline-block;color:Blue;font-size:11pt;font-weight:bold;height:100%;width:100%;">▼使用目的分類選択</a>
+
+																	</td>
+																</tr>
+																<tr>
+																	<td style="color:#000066;white-space:nowrap;">
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl03_ucPCSideMenuItem_dataListItem_ctl01_lblItem"
+																			style="display:inline-block;font-size:11pt;font-weight:bold;width:100%;">－屋外スポーツ</span>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl04_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+																		<a onclick="return Double_ClickCheck();"
+																			id="ucPCSideMenuBody_DataListBody_ctl04_ucPCSideMenuItem_dataListItem_ctl00_lnkBtnGoPage"
+																			tabindex="-1" focusedbordercolor="#ff8c00"
+																			href="javascript:__doPostBack(&#39;ucPCSideMenuBody$DataListBody$ctl04$ucPCSideMenuItem$dataListItem$ctl00$lnkBtnGoPage&#39;,&#39;&#39;)"
+																			style="display:inline-block;color:Blue;font-size:11pt;font-weight:bold;height:100%;width:100%;">▼使用目的選択</a>
+
+																	</td>
+																</tr>
+																<tr>
+																	<td style="color:#000066;white-space:nowrap;">
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl04_ucPCSideMenuItem_dataListItem_ctl01_lblItem"
+																			style="display:inline-block;font-size:11pt;font-weight:bold;width:100%;">－硬式テニス</span>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl05_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+																		<a onclick="return Double_ClickCheck();"
+																			id="ucPCSideMenuBody_DataListBody_ctl05_ucPCSideMenuItem_dataListItem_ctl00_lnkBtnGoPage"
+																			tabindex="-1" focusedbordercolor="#ff8c00"
+																			href="javascript:__doPostBack(&#39;ucPCSideMenuBody$DataListBody$ctl05$ucPCSideMenuItem$dataListItem$ctl00$lnkBtnGoPage&#39;,&#39;&#39;)"
+																			style="display:inline-block;color:Blue;font-size:11pt;font-weight:bold;height:100%;width:100%;">▼地区選択</a>
+
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl06_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+																		<a onclick="return Double_ClickCheck();"
+																			id="ucPCSideMenuBody_DataListBody_ctl06_ucPCSideMenuItem_dataListItem_ctl00_lnkBtnGoPage"
+																			tabindex="-1" focusedbordercolor="#ff8c00"
+																			href="javascript:__doPostBack(&#39;ucPCSideMenuBody$DataListBody$ctl06$ucPCSideMenuItem$dataListItem$ctl00$lnkBtnGoPage&#39;,&#39;&#39;)"
+																			style="display:inline-block;color:Blue;font-size:11pt;font-weight:bold;height:100%;width:100%;">▼付帯設備選択</a>
+
+																	</td>
+																</tr>
+																<tr>
+																	<td style="color:#000066;white-space:nowrap;">
+
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl07_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+																		<a onclick="return Double_ClickCheck();"
+																			id="ucPCSideMenuBody_DataListBody_ctl07_ucPCSideMenuItem_dataListItem_ctl00_lnkBtnGoPage"
+																			tabindex="-1" focusedbordercolor="#ff8c00"
+																			href="javascript:__doPostBack(&#39;ucPCSideMenuBody$DataListBody$ctl07$ucPCSideMenuItem$dataListItem$ctl00$lnkBtnGoPage&#39;,&#39;&#39;)"
+																			style="display:inline-block;color:Blue;font-size:11pt;font-weight:bold;height:100%;width:100%;">▼施設選択</a>
+
+																	</td>
+																</tr>
+																<tr>
+																	<td style="color:#000066;white-space:nowrap;">
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl07_ucPCSideMenuItem_dataListItem_ctl01_lblItem"
+																			style="display:inline-block;font-size:11pt;font-weight:bold;width:100%;">－大沼公園グラウンド</span>
+																	</td>
+																</tr>
+																<tr>
+																	<td style="color:#000066;white-space:nowrap;">
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl07_ucPCSideMenuItem_dataListItem_ctl02_lblItem"
+																			style="display:inline-block;font-size:11pt;font-weight:bold;width:100%;">－立沼テニス場</span>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl08_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+																		<a onclick="return Double_ClickCheck();"
+																			id="ucPCSideMenuBody_DataListBody_ctl08_ucPCSideMenuItem_dataListItem_ctl00_lnkBtnGoPage"
+																			tabindex="-1" focusedbordercolor="#ff8c00"
+																			href="javascript:__doPostBack(&#39;ucPCSideMenuBody$DataListBody$ctl08$ucPCSideMenuItem$dataListItem$ctl00$lnkBtnGoPage&#39;,&#39;&#39;)"
+																			style="display:inline-block;color:Blue;font-size:11pt;font-weight:bold;height:100%;width:100%;">▼日時選択</a>
+
+																	</td>
+																</tr>
+																<tr>
+																	<td style="color:#000066;white-space:nowrap;">
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl08_ucPCSideMenuItem_dataListItem_ctl01_lblItem"
+																			style="display:inline-block;font-size:11pt;font-weight:bold;width:100%;">－2024年10月1日</span>
+																	</td>
+																</tr>
+																<tr>
+																	<td style="color:#000066;white-space:nowrap;">
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl08_ucPCSideMenuItem_dataListItem_ctl02_lblItem"
+																			style="display:inline-block;font-size:11pt;font-weight:bold;width:100%;">－表示期間：1ヶ月</span>
+																	</td>
+																</tr>
+																<tr>
+																	<td style="color:#000066;white-space:nowrap;">
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl08_ucPCSideMenuItem_dataListItem_ctl03_lblItem"
+																			style="display:inline-block;font-size:11pt;font-weight:bold;width:100%;">－時間帯：全日</span>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl09_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl09_ucPCSideMenuItem_dataListItem_ctl00_lnkLblGoPage"
+																			style="display:inline-block;background-color:Black;font-size:11pt;height:100%;width:100%;">▼施設別空き状況</span>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl10_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl10_ucPCSideMenuItem_dataListItem_ctl00_lnkLblGoPage"
+																			style="display:inline-block;color:Black;font-size:11pt;height:100%;width:100%;">▼時間帯別空き状況</span>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl13_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl13_ucPCSideMenuItem_dataListItem_ctl00_lnkLblGoPage"
+																			style="display:inline-block;color:Black;font-size:11pt;height:100%;width:100%;">▼詳細申請</span>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl14_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl14_ucPCSideMenuItem_dataListItem_ctl00_lnkLblGoPage"
+																			style="display:inline-block;color:Black;font-size:11pt;height:100%;width:100%;">▼申込確認</span>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td>
+
+														<p>
+														<table
+															id="ucPCSideMenuBody_DataListBody_ctl15_ucPCSideMenuItem_dataListItem"
+															cellspacing="0" cellpadding="1" border="0"
+															style="border-color:#CCCCCC;height:100%;width:100%;border-collapse:collapse;">
+															<tbody>
+																<tr>
+																	<td
+																		style="color:White;font-weight:bold;white-space:nowrap;">
+
+																		<span
+																			id="ucPCSideMenuBody_DataListBody_ctl15_ucPCSideMenuItem_dataListItem_ctl00_lnkLblGoPage"
+																			style="display:inline-block;color:Black;font-size:11pt;height:100%;width:100%;">▼申込完了</span>
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														</p>
+
+													</td>
+												</tr>
+												<tr>
+													<td valign="bottom">
+
+														<span id="ucPCSideMenuBody_DataListBody_ctl16_lblSpace"
+															style="TEXT-ALIGN:Left;display:inline-block;color:Black;font-size:12pt;font-weight:bold;width:100%;">
+															<br>
+															<br>
+															<br>
+														</span>
+														<span id="ucPCSideMenuBody_DataListBody_ctl16_lblFooter"
+															style="TEXT-ALIGN:Left;display:inline-block;color:Black;font-size:12pt;font-weight:bold;width:100%;">途中で、ブラウザの「戻る」は<br>使用しないでください。</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</td>
+									<td nowrap="nowrap">
+										<table id="TableMain"
+											style="BACKGROUND-POSITION:right bottom;BACKGROUND-ATTACHMENT:fixed;BACKGROUND-IMAGE:url(image/eGRMark.gif);WIDTH:100%;BACKGROUND-REPEAT:no-repeat;HEIGHT:100%;"
+											cellspacing="0" cellpadding="0" border="0">
+											<tbody>
+												<tr>
+													<td style="HEIGHT: 100%" nowrap="nowrap">
+														<div id="DivMain"
+															style="BACKGROUND-POSITION:right bottom;BACKGROUND-ATTACHMENT:fixed;WIDTH:100%;BACKGROUND-REPEAT:no-repeat;">
+															<table>
+																<tbody>
+																	<tr>
+																		<td style="width: 75%"></td>
+																		<td style="width: 25%"></td>
+																	</tr>
+																</tbody>
+															</table>
+															<table id="Table2" cellspacing="1" cellpadding="1"
+																width="100%" border="0">
+																<tbody>
+																	<tr>
+																		<td colspan="3"><span id="lblCap"
+																				style="display:inline-block;font-size:14pt;font-weight:bold;width:100%;">"○"、"△"と表示されている日は申込ができます。申込をしたいところを選んで<br>「次へ」のボタンを押してください。選択すると「選択」の文字が表示されます。<br>複数の日にちの申込ができます。<br>　　　　（○：空き　△：一部空き　×：空きなし　－：申込期間外　＊：公開対象外）</span>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+
+																			<table width="100%">
+																				<tbody>
+																					<tr>
+																						<td nowrap="nowrap">
+																							<span
+																								id="ucTermSetting_lblDateFrom"
+																								style="color:Black;font-size:12pt;font-weight:bold;">表示開始日：</span>
+																						</td>
+																						<td nowrap="nowrap">
+
+																							<input
+																								name="ucTermSetting$txtDateFrom"
+																								type="text"
+																								value="2024/10/01"
+																								id="ucTermSetting_txtDateFrom"
+																								style="font-size:12pt;font-weight:bold;width:100px;font-size:12pt;font-weight:bold;width:120px;"
+																								control-id="ControlID-4">
+																							<input type="image"
+																								name="ucTermSetting$btnCalendar"
+																								id="ucTermSetting_btnCalendar"
+																								src="./施設別空き状況_10月_files/Calendar_scheduleHS.png"
+																								onclick="return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ucTermSetting$btnCalendar&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))"
+																								style="border-width:0px;"
+																								control-id="ControlID-5">
+
+																						</td>
+																						<td></td>
+																						<td nowrap="nowrap">
+
+																						</td>
+																						<td>
+
+																						</td>
+																						<td nowrap="nowrap"
+																							style="width: 5%">
+
+																						</td>
+																						<td>
+
+																						</td>
+																					</tr>
+																					<tr id="ucTermSetting_tr1"
+																						style="display:none;">
+																						<td nowrap="nowrap">
+
+																						</td>
+																						<td nowrap="nowrap">
+																							<div
+																								id="ucTermSetting_updpnlWeek">
+
+																								<span
+																									id="ucTermSetting_cblWeek"
+																									style="font-size:10pt;"><input
+																										id="ucTermSetting_cblWeek_0"
+																										type="checkbox"
+																										name="ucTermSetting$cblWeek$0"
+																										checked="checked"><label
+																										for="ucTermSetting_cblWeek_0">月</label><input
+																										id="ucTermSetting_cblWeek_1"
+																										type="checkbox"
+																										name="ucTermSetting$cblWeek$1"
+																										checked="checked"><label
+																										for="ucTermSetting_cblWeek_1">火</label><input
+																										id="ucTermSetting_cblWeek_2"
+																										type="checkbox"
+																										name="ucTermSetting$cblWeek$2"
+																										checked="checked"><label
+																										for="ucTermSetting_cblWeek_2">水</label><input
+																										id="ucTermSetting_cblWeek_3"
+																										type="checkbox"
+																										name="ucTermSetting$cblWeek$3"
+																										checked="checked"><label
+																										for="ucTermSetting_cblWeek_3">木</label><input
+																										id="ucTermSetting_cblWeek_4"
+																										type="checkbox"
+																										name="ucTermSetting$cblWeek$4"
+																										checked="checked"><label
+																										for="ucTermSetting_cblWeek_4">金</label><input
+																										id="ucTermSetting_cblWeek_5"
+																										type="checkbox"
+																										name="ucTermSetting$cblWeek$5"
+																										checked="checked"><label
+																										for="ucTermSetting_cblWeek_5">土</label><input
+																										id="ucTermSetting_cblWeek_6"
+																										type="checkbox"
+																										name="ucTermSetting$cblWeek$6"
+																										checked="checked"><label
+																										for="ucTermSetting_cblWeek_6">日</label><input
+																										id="ucTermSetting_cblWeek_7"
+																										type="checkbox"
+																										name="ucTermSetting$cblWeek$7"
+																										checked="checked"><label
+																										for="ucTermSetting_cblWeek_7">祝日</label></span>
+
+																							</div>
+																						</td>
+																						<td width="5%">
+																							&nbsp;</td>
+																						<td colspan="2">
+																							<div
+																								id="ucTermSetting_updpnlWeekAll">
+
+																								<input type="submit"
+																									name="ucTermSetting$btnWeekAll"
+																									value="全解除"
+																									onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ucTermSetting$btnWeekAll&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))"
+																									id="ucTermSetting_btnWeekAll"
+																									class="gradient_Blue10"
+																									focusedborderstyle=""
+																									focusedbordercolor=""
+																									borderstyle=""
+																									bordercolor=""
+																									onfocus="Button_OnFocus(this)"
+																									onblur="Button_OnBlur(this)"
+																									onmouseover="Button_OnMouseOver(this)"
+																									onmouseout="Button_OnMouseOut(this)"
+																									hidefocus="true"
+																									style="cursor:hand;font-size:10pt;font-weight:bold;">
+
+																							</div>
+																						</td>
+																						<td width="5%">
+																							&nbsp;</td>
+																						<td colspan="2" nowrap="nowrap">
+																							<div
+																								id="ucTermSetting_updpnlTime">
+
+
+																								<input
+																									name="ucTermSetting$txtTimeFrom"
+																									type="text"
+																									maxlength="2"
+																									id="ucTermSetting_txtTimeFrom"
+																									disabled="disabled"
+																									style="background-color:LightGrey;font-size:10pt;width:20px;"><span
+																									id="ucTermSetting_lblTimeFrom"
+																									style="font-size:10pt;">時～</span><input
+																									name="ucTermSetting$txtTimeTo"
+																									type="text"
+																									maxlength="2"
+																									id="ucTermSetting_txtTimeTo"
+																									disabled="disabled"
+																									style="background-color:LightGrey;font-size:10pt;width:20px;"><span
+																									id="ucTermSetting_lblTimeTo"
+																									style="font-size:10pt;">時</span>
+
+																							</div>
+																						</td>
+																					</tr>
+
+																				</tbody>
+																			</table>
+
+																		</td>
+																		<td>
+																			<table>
+																				<tbody>
+																					<tr>
+																						<td width="5%">&nbsp;</td>
+																						<td width="1%">
+																							<input type="submit"
+																								name="btnUpdate"
+																								value="更新"
+																								onclick="NoOnBeforeUnload();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnUpdate&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))"
+																								id="btnUpdate"
+																								class="gradient_Blue14"
+																								focusedborderstyle=""
+																								focusedbordercolor=""
+																								borderstyle=""
+																								bordercolor=""
+																								onfocus="Button_OnFocus(this)"
+																								onblur="Button_OnBlur(this)"
+																								onmouseover="Button_OnMouseOver(this)"
+																								onmouseout="Button_OnMouseOut(this)"
+																								hidefocus="true"
+																								style="cursor:hand;font-size:12pt;font-weight:bold;"
+																								control-id="ControlID-10">
+																						</td>
+																						<td width="5%">&nbsp;</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</td>
+																		<td width="100%">&nbsp;</td>
+																	</tr>
+																</tbody>
+															</table>
+															<table id="Table3" cellspacing="1" cellpadding="1"
+																width="100%" border="0">
+																<tbody>
+																	<tr>
+																		<td width="5%" valign="middle" nowrap=""
+																			align="left"><input type="submit"
+																				name="btnPrevPeriod" value="&lt; 前の期間"
+																				id="btnPrevPeriod"
+																				class="gradient_Blue10"
+																				focusedborderstyle=""
+																				focusedbordercolor="" borderstyle=""
+																				bordercolor="" pb="True"
+																				onclick="NoOnBeforeUnload();return Button_OnClick(this);"
+																				onfocus="Button_OnFocus(this)"
+																				onblur="Button_OnBlur(this)"
+																				onmouseover="Button_OnMouseOver(this)"
+																				onmouseout="Button_OnMouseOut(this)"
+																				hidefocus="true"
+																				style="cursor:hand;font-size:10pt;font-weight:bold;"
+																				control-id="ControlID-11"></td>
+																		<td width="5%" valign="middle" nowrap=""
+																			align="left"><span id="lblKikanLeft"
+																				style="font-size:12pt;font-weight:bold;">別の期間を表示させると、選択の指定は解除されます。</span>
+																		</td>
+
+																		<td width="5%"></td>
+																		<td width="70%" nowrap="" align="center"></td>
+																		<td width="5%" valign="middle" nowrap=""
+																			align="right"><span id="lblKikanRight"
+																				style="font-size:12pt;font-weight:bold;">別の期間を表示させると、選択の指定は解除されます。</span>
+																		</td>
+																		<td width="5%" valign="middle" nowrap=""
+																			align="right"><input type="submit"
+																				name="btnNextPeriod" value="次の期間 &gt;"
+																				id="btnNextPeriod"
+																				class="gradient_Blue10"
+																				focusedborderstyle=""
+																				focusedbordercolor="" borderstyle=""
+																				bordercolor="" pb="True"
+																				onclick="NoOnBeforeUnload();return Button_OnClick(this);"
+																				onfocus="Button_OnFocus(this)"
+																				onblur="Button_OnBlur(this)"
+																				onmouseover="Button_OnMouseOver(this)"
+																				onmouseout="Button_OnMouseOut(this)"
+																				hidefocus="true"
+																				style="cursor:hand;font-size:10pt;font-weight:bold;"
+																				control-id="ControlID-12"></td>
+																		<td width="5%"></td>
+																	</tr>
+																</tbody>
+															</table>
+
+
+
+<!-- ここから！！ -->
+															<table id="Table1" cellspacing="1" cellpadding="1"
+																width="100%" border="0">
+																<tbody>
+																	<tr>
+																		<td nowrap="" align="left">
+																			<table id="dlRepeat" cellspacing="0"
+																				border="0"
+																				style="width:100%;border-collapse:collapse;">
+																				<tbody>
+																					<tr>
+																						<td>
+
+																							<font face="MS UI Gothic">
+																								<table
+																									id="dlRepeat_ctl00_tpItem_Table1"
+																									cellspacing="1"
+																									cellpadding="1"
+																									border="0"
+																									width="100%">
+																									<tbody>
+																										<tr>
+																											<td nowrap="nowrap"
+																												width="90%"
+																												colspan="2"
+																												bgcolor="#e6e6fa">
+																												<table
+																													id="Table2"
+																													cellspacing="1"
+																													cellpadding="1"
+																													width="100%"
+																													border="1"
+																													style="HEIGHT: 28px"
+																													align="right">
+																													<tbody>
+																														<tr>
+																															<td valign="bottom"
+																																nowrap=""
+																																width="90%"
+																																colspan="2">
+																																<span
+																																	id="dlRepeat_ctl00_tpItem_lblShisetsu"
+																																	style="font-size:14pt;font-weight:bold;">大沼公園グラウンド</span>
+																																&nbsp;&nbsp;&nbsp;&nbsp;
+
+																																<a onclick="javascript:window.open(&quot;Wg_ShisetsuNotice.aspx?JICode=214&amp;SSCode=023&amp;SSName=%e5%a4%a7%e6%b2%bc%e5%85%ac%e5%9c%92%e3%82%b0%e3%83%a9%e3%82%a6%e3%83%b3%e3%83%89&quot;,&quot;&quot;,&quot;toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=yes,resizable=yes,width=500,height=600&quot;);return false;"
+																																	id="dlRepeat_ctl00_tpItem_lnkNotice"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$lnkNotice&#39;,&#39;&#39;)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size: 14pt; font-weight: bold;">施設からのお知らせがあります。</a>&nbsp;&nbsp;&nbsp;&nbsp;
+																															</td>
+																														</tr>
+																													</tbody>
+																												</table>
+
+																											</td>
+																										</tr>
+																										<tr>
+																											<td nowrap="nowrap"
+																												align="center"
+																												colspan="2">
+																												<table
+																													cellspacing="0"
+																													rules="all"
+																													border="1"
+																													id="dlRepeat_ctl00_tpItem_dgTable"
+																													style="border-style:None;font-size:14pt;font-weight:bold;width:100%;border-collapse:collapse;">
+																													<tbody>
+																														<tr class="TitleColor"
+																															align="center"
+																															valign="middle"
+																															style="white-space:nowrap;">
+																															<td
+																																style="width:40%;white-space:nowrap;">
+																																2024年10月<br>
+																															</td>
+																															<td
+																																style="font-size:14pt;font-weight:bold;width:10%;white-space:nowrap;">
+																																<span
+																																	id="dlRepeat_ctl00_tpItem_dgTable_ctl01_lblTeiin_Head"
+																																	style="TEXT-ALIGN:Center;display:inline-block;color:White;font-size:14pt;width:100%;">定員</span>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																1<br>火
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																2<br>水
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																3<br>木
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																4<br>金
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																5<br>土
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																6<br>日
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																7<br>月
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																8<br>火
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																9<br>水
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																10<br>木
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																11<br>金
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																12<br>土
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																13<br>日
+																															</td>
+																															<td class="HolidayTitleColor"
+																																style="white-space:nowrap;">
+																																14<br>月
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																15<br>火
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																16<br>水
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																17<br>木
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																18<br>金
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																19<br>土
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																20<br>日
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																21<br>月
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																22<br>火
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																23<br>水
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																24<br>木
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																25<br>金
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																26<br>土
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																27<br>日
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																28<br>月
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																29<br>火
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																30<br>水
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																31<br>木
+																															</td>
+																														</tr>
+																														<tr align="center"
+																															valign="middle"
+																															style="background-color:White;white-space:nowrap;">
+																															<td align="left"
+																																style="white-space:nowrap;">
+
+																																<a onclick="javascript:window.open(&quot;http://www.city.kasukabe.lg.jp/taiiku/shisei/shisetsu-annai/kouen/068.html&quot;,&quot;&quot;,&quot;toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=yes,resizable=yes,width=800,height=500&quot;);return false;"
+																																	id="dlRepeat_ctl00_tpItem_dgTable_ctl02_lnkShitsujou"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$lnkShitsujou&#39;,&#39;&#39;)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="color:Blue;font-size:14pt;font-weight:bold;">テニスコート</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<span
+																																	id="dlRepeat_ctl00_tpItem_dgTable_ctl02_lblTeiin"
+																																	style="TEXT-ALIGN:Center;display:inline-block;font-size:14pt;font-weight:bold;width:100%;">－</span>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241001"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241001&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241002"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241002&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241003"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241003&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241004"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241004&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241005"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241005&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241006"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241006&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241007"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241007&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241008"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241008&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241009"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241009&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241010"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241010&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241011"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241011&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241012"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241012&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241013"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241013&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241014"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241014&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241015"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241015&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241016"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241016&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241017"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241017&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241018"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241018&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241019"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241019&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241020"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241020&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241021"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241021&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241022"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241022&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241023"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241023&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241024"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241024&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241025"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241025&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241026"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241026&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241027"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241027&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241028"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241028&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241029"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241029&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241030"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241030&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl00_tpItem_dgTable_ctl02_b20241031"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$dgTable$ctl02$b20241031&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																														</tr>
+																													</tbody>
+																												</table>
+																												<table
+																													id="TableFoot"
+																													cellspacing="1"
+																													cellpadding="1"
+																													width="100%"
+																													border="0">
+																													<tbody>
+																														<tr>
+																															<td
+																																align="left">
+																																<a id="dlRepeat_ctl00_tpItem_Migrated_lnkPrevSpan"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$Migrated_lnkPrevSpan&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&lt;
+																																	前の期間を表示</a>
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="right">
+																																<a id="dlRepeat_ctl00_tpItem_lnkBackLeft"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$lnkBackLeft&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&lt;&lt;
+																																	戻る</a>
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="left">
+																																<a id="dlRepeat_ctl00_tpItem_lnkNextLeft"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$lnkNextLeft&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">次へ
+																																	&gt;&gt;</a>
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="right">
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="left">
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="right">
+																																<a id="dlRepeat_ctl00_tpItem_lnkBackRight"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$lnkBackRight&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&lt;&lt;
+																																	戻る</a>
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="left">
+																																<a id="dlRepeat_ctl00_tpItem_lnkNextRight"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$lnkNextRight&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">次へ
+																																	&gt;&gt;</a>
+																															</td>
+																															<td
+																																align="right">
+																																<a id="dlRepeat_ctl00_tpItem_Migrated_lnkNextSpan"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl00$tpItem$Migrated_lnkNextSpan&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">次の期間を表示
+																																	&gt;</a>
+																															</td>
+																														</tr>
+																													</tbody>
+																												</table>
+
+																											</td>
+																										</tr>
+																									</tbody>
+																								</table>
+
+																							</font>
+
+																						</td>
+																					</tr>
+<!-- ここから立沼-->
+								
+																					<tr>
+																						<td>
+
+																							<font face="MS UI Gothic">
+																								<table
+																									id="dlRepeat_ctl01_tpItem_Table1"
+																									cellspacing="1"
+																									cellpadding="1"
+																									border="0"
+																									width="100%">
+																									<tbody>
+																										<tr>
+																											<td nowrap="nowrap"
+																												width="90%"
+																												colspan="2"
+																												bgcolor="#e6e6fa">
+																												<table
+																													id="Table2"
+																													cellspacing="1"
+																													cellpadding="1"
+																													width="100%"
+																													border="1"
+																													style="HEIGHT: 28px"
+																													align="right">
+																													<tbody>
+																														<tr>
+																															<td valign="bottom"
+																																nowrap=""
+																																width="90%"
+																																colspan="2">
+
+																																<a onclick="javascript:window.open(&quot;https://www.city.kasukabe.lg.jp/benrinavi/shisetsuannai/categorykarasagasu/6/9707.html&quot;,&quot;&quot;,&quot;toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=yes,resizable=yes,width=800,height=500&quot;);return false;"
+																																	id="dlRepeat_ctl01_tpItem_lnkShisetsu"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$lnkShisetsu&#39;,&#39;&#39;)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">立沼テニス場</a>&nbsp;&nbsp;&nbsp;&nbsp;
+																																<span
+																																	id="dlRepeat_ctl01_tpItem_lblGuideExpl"
+																																	style="color:Blue;font-size:12pt;font-weight:bold;">下線のある施設は案内画面があります。</span>
+																																&nbsp;&nbsp;&nbsp;&nbsp;
+																															</td>
+																														</tr>
+																													</tbody>
+																												</table>
+
+																											</td>
+																										</tr>
+																										<tr>
+																											<td nowrap="nowrap"
+																												align="center"
+																												colspan="2">
+																												<table
+																													cellspacing="0"
+																													rules="all"
+																													border="1"
+																													id="dlRepeat_ctl01_tpItem_dgTable"
+																													style="border-style:None;font-size:14pt;font-weight:bold;width:100%;border-collapse:collapse;">
+																													<tbody>
+																														<tr class="TitleColor"
+																															align="center"
+																															valign="middle"
+																															style="white-space:nowrap;">
+																															<td
+																																style="width:40%;white-space:nowrap;">
+																																2024年10月<br>
+																															</td>
+																															<td
+																																style="font-size:14pt;font-weight:bold;width:10%;white-space:nowrap;">
+																																<span
+																																	id="dlRepeat_ctl01_tpItem_dgTable_ctl01_lblTeiin_Head"
+																																	style="TEXT-ALIGN:Center;display:inline-block;color:White;font-size:14pt;width:100%;">定員</span>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																1<br>火
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																2<br>水
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																3<br>木
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																4<br>金
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																5<br>土
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																6<br>日
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																7<br>月
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																8<br>火
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																9<br>水
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																10<br>木
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																11<br>金
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																12<br>土
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																13<br>日
+																															</td>
+																															<td class="HolidayTitleColor"
+																																style="white-space:nowrap;">
+																																14<br>月
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																15<br>火
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																16<br>水
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																17<br>木
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																18<br>金
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																19<br>土
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																20<br>日
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																21<br>月
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																22<br>火
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																23<br>水
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																24<br>木
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																25<br>金
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																26<br>土
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																27<br>日
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																28<br>月
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																29<br>火
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																30<br>水
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																31<br>木
+																															</td>
+																														</tr>
+																														<tr align="center"
+																															valign="middle"
+																															style="background-color:White;white-space:nowrap;">
+																															<td align="left"
+																																style="white-space:nowrap;">
+																																<span
+																																	id="dlRepeat_ctl01_tpItem_dgTable_ctl02_lblShitsujou"
+																																	style="font-size:14pt;font-weight:bold;">テニスコート</span>
+
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<span
+																																	id="dlRepeat_ctl01_tpItem_dgTable_ctl02_lblTeiin"
+																																	style="TEXT-ALIGN:Center;display:inline-block;font-size:14pt;font-weight:bold;width:100%;">－</span>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241001"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241001&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241002"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241002&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241003"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241003&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241004"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241004&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;○&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241005"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241005&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241006"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241006&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241007"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241007&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241008"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241008&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241009"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241009&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241010"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241010&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241011"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241011&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;○&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241012"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241012&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241013"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241013&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241014"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241014&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241015"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241015&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241016"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241016&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241017"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241017&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241018"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241018&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;○&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241019"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241019&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241020"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241020&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241021"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241021&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241022"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241022&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241023"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241023&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241024"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241024&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241025"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241025&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;○&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241026"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241026&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241027"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241027&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241028"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241028&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241029"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241029&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241030"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241030&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;×&nbsp;&nbsp;</a>
+																															</td>
+																															<td
+																																style="white-space:nowrap;">
+																																<a id="dlRepeat_ctl01_tpItem_dgTable_ctl02_b20241031"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$dgTable$ctl02$b20241031&#39;,&#39;&#39;)"
+																																	pb="False"
+																																	onclick="return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&nbsp;&nbsp;△&nbsp;&nbsp;</a>
+																															</td>
+																														</tr>
+																													</tbody>
+																												</table>
+																												<table
+																													id="TableFoot"
+																													cellspacing="1"
+																													cellpadding="1"
+																													width="100%"
+																													border="0">
+																													<tbody>
+																														<tr>
+																															<td
+																																align="left">
+																																<a id="dlRepeat_ctl01_tpItem_Migrated_lnkPrevSpan"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$Migrated_lnkPrevSpan&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&lt;
+																																	前の期間を表示</a>
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="right">
+																																<a id="dlRepeat_ctl01_tpItem_lnkBackLeft"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$lnkBackLeft&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&lt;&lt;
+																																	戻る</a>
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="left">
+																																<a id="dlRepeat_ctl01_tpItem_lnkNextLeft"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$lnkNextLeft&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">次へ
+																																	&gt;&gt;</a>
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="right">
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="left">
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="right">
+																																<a id="dlRepeat_ctl01_tpItem_lnkBackRight"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$lnkBackRight&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">&lt;&lt;
+																																	戻る</a>
+																															</td>
+																															<td>&nbsp;
+																															</td>
+																															<td
+																																align="left">
+																																<a id="dlRepeat_ctl01_tpItem_lnkNextRight"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$lnkNextRight&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">次へ
+																																	&gt;&gt;</a>
+																															</td>
+																															<td
+																																align="right">
+																																<a id="dlRepeat_ctl01_tpItem_Migrated_lnkNextSpan"
+																																	tabindex="1"
+																																	href="javascript:__doPostBack(&#39;dlRepeat$ctl01$tpItem$Migrated_lnkNextSpan&#39;,&#39;&#39;)"
+																																	pb="True"
+																																	onclick="NoOnBeforeUnload();return DCC(this)"
+																																	onfocus="lbF(this)"
+																																	onblur="lbB(this)"
+																																	style="font-size:14pt;font-weight:bold;">次の期間を表示
+																																	&gt;</a>
+																															</td>
+																														</tr>
+																													</tbody>
+																												</table>
+
+																											</td>
+																										</tr>
+																									</tbody>
+																								</table>
+
+																							</font>
+
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+															&nbsp;
+														</div>
+
+													</td>
+												</tr>
+												<tr>
+													<td style="WIDTH: 100%" nowrap="nowrap">
+														<div class="FooterMain">
+															<table id="ucPCFooter_TableFooter" cellspacing="1"
+																cellpadding="1" border="0" align="center">
+																<tbody>
+																	<tr>
+																		<td nowrap="nowrap" width="3%"></td>
+																		<td nowrap="nowrap">
+																			<div id="ucPCFooter_pnlUtilBtn">
+
+																				<input type="submit"
+																					name="ucPCFooter$btnUtil"
+																					value="色・文字サイズ変更"
+																					id="ucPCFooter_btnUtil"
+																					tabindex="104"
+																					class="gradient_Blue14"
+																					focusedborderstyle=""
+																					focusedbordercolor="" borderstyle=""
+																					bordercolor="" pb="True"
+																					onclick="NoOnBeforeUnload();return Button_OnClick(this);"
+																					onfocus="Button_OnFocus(this)"
+																					onblur="Button_OnBlur(this)"
+																					onmouseover="Button_OnMouseOver(this)"
+																					onmouseout="Button_OnMouseOut(this)"
+																					hidefocus="true"
+																					style="cursor:hand;background-color:#D9CCFF;border-color:#D9CCFF;font-size:14pt;font-weight:bold;"
+																					control-id="ControlID-6">
+
+																			</div>
+																		</td>
+																		<td nowrap="nowrap" width="1%"></td>
+																		<td nowrap="nowrap">
+																			<div id="ucPCFooter_pnlMenuBtn">
+
+																				<input type="submit"
+																					name="ucPCFooter$btnToMenu"
+																					value="メニューへ"
+																					id="ucPCFooter_btnToMenu"
+																					tabindex="103"
+																					class="gradient_Blue14"
+																					focusedborderstyle=""
+																					focusedbordercolor="" borderstyle=""
+																					bordercolor="" pb="True"
+																					onclick="NoOnBeforeUnload();return Button_OnClick(this);"
+																					onfocus="Button_OnFocus(this)"
+																					onblur="Button_OnBlur(this)"
+																					onmouseover="Button_OnMouseOver(this)"
+																					onmouseout="Button_OnMouseOut(this)"
+																					hidefocus="true"
+																					style="cursor:hand;background-color:#D9CCFF;border-color:#D9CCFF;font-size:14pt;font-weight:bold;"
+																					control-id="ControlID-7">
+
+																			</div>
+																		</td>
+																		<td nowrap="nowrap" width="1%"></td>
+																		<td nowrap="nowrap">
+
+																		</td>
+																		<td nowrap="nowrap" width="2%"></td>
+																		<td nowrap="nowrap">
+																			<div id="ucPCFooter_pnlBackBtn">
+
+																				<input type="submit"
+																					name="ucPCFooter$btnBack"
+																					value="&lt;&lt; 戻る"
+																					id="ucPCFooter_btnBack"
+																					tabindex="101"
+																					class="gradient_Blue14"
+																					focusedborderstyle=""
+																					focusedbordercolor="" borderstyle=""
+																					bordercolor="" pb="True"
+																					onclick="NoOnBeforeUnload();return Button_OnClick(this);"
+																					onfocus="Button_OnFocus(this)"
+																					onblur="Button_OnBlur(this)"
+																					onmouseover="Button_OnMouseOver(this)"
+																					onmouseout="Button_OnMouseOut(this)"
+																					hidefocus="true"
+																					style="cursor:hand;background-color:#D9CCFF;border-color:#D9CCFF;font-size:14pt;font-weight:bold;"
+																					control-id="ControlID-8">
+
+																			</div>
+																		</td>
+																		<td nowrap="nowrap" width="1%"></td>
+																		<td nowrap="nowrap">
+																			<div id="ucPCFooter_pnlNextBtn">
+
+																				<input type="submit"
+																					name="ucPCFooter$btnForward"
+																					value="次へ &gt;&gt;"
+																					id="ucPCFooter_btnForward"
+																					tabindex="100"
+																					class="gradient_Blue14"
+																					focusedborderstyle=""
+																					focusedbordercolor="" borderstyle=""
+																					bordercolor="" pb="True"
+																					onclick="NoOnBeforeUnload();if (click_flg == 0){SetDisabled(this);__doPostBack(&#39;ucPCFooter$btnForward&#39;,&#39;&#39;);}return Button_OnClick(this);"
+																					onfocus="Button_OnFocus(this)"
+																					onblur="Button_OnBlur(this)"
+																					onmouseover="Button_OnMouseOver(this)"
+																					onmouseout="Button_OnMouseOut(this)"
+																					hidefocus="true"
+																					style="cursor:hand;background-color:#FFCC99;border-color:#FFCC99;font-size:14pt;font-weight:bold;"
+																					control-id="ControlID-9">
+
+																			</div>
+																		</td>
+																		<td nowrap="nowrap" width="100%"></td>
+																	</tr>
+																</tbody>
+															</table>
+
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<script
+			language="javascript">function showOKCancelDialog() { if (click_flg == 1) { return false; } var ret = confirm("ログアウトします。よろしいですか。"); var h = document.forms[0].elements["h_Logout"]; h.value = ret; if (ret) { click_flg = 1; } return ret; }</script>
+		<script language="javascript"><!-
+document.bgColor="#ffffff"
+//--></script>
+		<script
+			language="javascript">var f = AjaxControlToolkit.CalendarBehavior.prototype._performLayout.toString(); f = f.replace('"MMMM, yyyy"', '"yyyy年 M月"').replace('"MMMM d, yyyy"', '"yyyy年 M月 d日"'); eval("AjaxControlToolkit.CalendarBehavior.prototype._performLayout = " + f);</script>
+		<script type="text/javascript">
+			//<![CDATA[
+			Sys.Application.initialize();
+			Sys.Application.add_init(function () {
+				$create(AjaxControlToolkit.CalendarBehavior, { "animated": false, "button": $get("ucTermSetting_btnCalendar"), "format": "yyyy/MM/dd", "id": "ucTermSetting_ceCalendar", "popupPosition": 2 }, null, null, $get("ucTermSetting_txtDateFrom"));
+			});
+			//]]>
+		</script>
+	</form>
+
+
+</body>
+
+</html>
