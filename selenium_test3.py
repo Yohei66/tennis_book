@@ -8,16 +8,11 @@ from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoAlertPresentException
-
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
-from datetime import datetime
+from selenium.common.exceptions import NoAlertPresentException, NoSuchElementException
 import calendar
 import time
 import re
-import jpholiday 
+import jpholiday
 
 # 今日の日付を取得
 today = datetime.today()
@@ -30,14 +25,13 @@ year = three_months_later.year
 month = three_months_later.month
 day = three_months_later.day
 
-id="52003401"
+id = "52003401"
+password = "1234"
 
-password="1234"
+places = {'大沼公園グラウンド', '立沼テニス場'}
 
-places={'大沼公園グラウンド','立沼テニス場'}
-
-weekdays={'火','水','木','金','土','日','祝'}
-
+# 対象の曜日を設定（木、土、日、祝）
+weekdays = {'木', '土', '日', '祝'}
 
 # WebDriverのオプションを設定
 options = Options()
@@ -71,43 +65,30 @@ driver.find_element(By.ID, "ucButtonList_dgButtonList_ctl03_chkSelectRight").cli
 driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 
-
 for place in places:
-    element = driver.find_element(By.XPATH, "//input[@value='"+place+"']")
+    element = driver.find_element(By.XPATH, "//input[@value='" + place + "']")
     element.click()
 
 driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 
-driver.find_element(By.ID, "txtYear").send_keys(Keys.CONTROL+"a")
+driver.find_element(By.ID, "txtYear").send_keys(Keys.CONTROL + "a")
 driver.find_element(By.ID, "txtYear").send_keys(Keys.DELETE)
 driver.find_element(By.ID, "txtYear").send_keys(year)
-driver.find_element(By.ID, "txtMonth").send_keys(Keys.CONTROL+"a")
+driver.find_element(By.ID, "txtMonth").send_keys(Keys.CONTROL + "a")
 driver.find_element(By.ID, "txtMonth").send_keys(Keys.DELETE)
 driver.find_element(By.ID, "txtMonth").send_keys(month)
-driver.find_element(By.ID, "txtDay").send_keys(Keys.CONTROL+"a")
+driver.find_element(By.ID, "txtDay").send_keys(Keys.CONTROL + "a")
 driver.find_element(By.ID, "txtDay").send_keys(Keys.DELETE)
 driver.find_element(By.ID, "txtDay").send_keys("1")
 
-driver.find_element(By.ID,"rbtnMonth").click()
+driver.find_element(By.ID, "rbtnMonth").click()
 
-
-# Table6の中のtbodyの中のtrの中のtdの中のinputの中の値＝曜日
+# 曜日のチェックボックスを選択
 for weekday in weekdays:
-        driver.find_element(By.XPATH, "//table[@id='Table6']/tbody/tr/td/input[@value='"+weekday+"']").click()
+    driver.find_element(By.XPATH, "//table[@id='Table6']/tbody/tr/td/input[@value='" + weekday + "']").click()
 driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 
-# driver.find_element(By.ID, "dgTable_ctl02_chkShisetsu").click()
-# driver.find_element(By.ID, "dgTable_ctl03_chkShisetsu").click()
-# driverWebDriverWait(driver, 10)
-# try:
-#     # Adjust the XPath to locate the specific button for 共用B on Tuesdays 17:00-19:00
-#     button = wait.until(EC.element_to_be_clickable((By.XPATH, '//td[contains(text(), "17:00～19:00")]/following-sibling::td[contains(text(), "共用B")]/preceding-sibling::td/input[@type="submit"]')))
-#     button.click()
-#     print("Button clicked successfully!")
-# except Exception as e:
-#     print(f"An error occurred: {e}")
-
-
+# 待機オブジェクトを作成
 wait = WebDriverWait(driver, 10)
 
 def get_facility_element():
@@ -117,29 +98,11 @@ def get_facility_element():
 def get_dg_table(facility_element):
     return facility_element.find_element(By.XPATH, ".//table[contains(@id, '_dgTable')]")
 
-def get_displayed_month(dg_table):
-    month_cell = dg_table.find_element(By.XPATH, ".//tr[1]/td[1]")
-    month_text = month_cell.text  # 例："2024年10月"
-    match = re.search(r'(\d+)年(\d+)月', month_text)
-    if match:
-        year = int(match.group(1))
-        month = int(match.group(2))
-        return year, month
-    else:
-        return None, None
+# ターゲットの年月を設定
+current_year = three_months_later.year
+current_month = three_months_later.month
 
-def get_next_month_link(facility_element):
-    return facility_element.find_element(By.XPATH, ".//a[contains(@id, 'Migrated_lnkNextSpan')]")
-
-def get_prev_month_link(facility_element):
-    return facility_element.find_element(By.XPATH, ".//a[contains(@id, 'Migrated_lnkPrevSpan')]")
-
-# 現在の年月を取得
-today = datetime.today()
-current_year = today.year
-current_month = today.month
-
-# 月の日数を取得
+# ターゲットの月の日数を取得
 num_days = calendar.monthrange(current_year, current_month)[1]
 
 # 木土日祝の日時を取得
@@ -154,40 +117,19 @@ for day in range(1, num_days + 1):
 facility_element = get_facility_element()
 dg_table = get_dg_table(facility_element)
 
-# 必要な月にナビゲート
-max_attempts = 12  # 無限ループ防止のため
-attempts = 0
+# 対象の日付の要素をクリック
+for date in dates_to_click:
+    date_str = date.strftime('%Y%m%d')
+    date_id = '_b' + date_str
+    try:
+        date_element = dg_table.find_element(By.XPATH, f".//a[contains(@id, '{date_id}')]")
+        date_element.click()
+        time.sleep(0.5)  # 必要に応じて調整
+    except NoSuchElementException:
+        print(f"{date_str} の要素が見つかりませんでした。")
 
-while attempts < max_attempts:
-    displayed_year, displayed_month = get_displayed_month(dg_table)
-    if displayed_year == current_year and displayed_month == current_month:
-        break
-    elif (displayed_year, displayed_month) < (current_year, current_month):
-        next_month_link = get_next_month_link(facility_element)
-        next_month_link.click()
-        time.sleep(1)
-        facility_element = get_facility_element()
-        dg_table = get_dg_table(facility_element)
-    else:
-        prev_month_link = get_prev_month_link(facility_element)
-        prev_month_link.click()
-        time.sleep(1)
-        facility_element = get_facility_element()
-        dg_table = get_dg_table(facility_element)
-    attempts += 1
+# ここで必要な処理を続けます
+# 例：選択を確認して次のページへ進むなど
 
-if attempts >= max_attempts:
-    print("目的の月に移動できませんでした。")
-else:
-    for date in dates_to_click:
-        date_str = date.strftime('%Y%m%d')
-        date_id = '_b' + date_str
-        try:
-            date_element = dg_table.find_element(By.XPATH, f".//a[contains(@id, '{date_id}')]")
-            date_element.click()
-            time.sleep(0.5)  # 必要に応じて調整
-        except NoSuchElementException:
-            print(f"{date_str} の要素が見つかりませんでした。")
-
-while True:
-    pass
+# ブラウザを閉じる場合は以下をアンコメント
+# driver.quit()
