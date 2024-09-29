@@ -1,0 +1,121 @@
+﻿// JavaScript for OecButton
+
+// イベントハンドラ ------------------------------------------------------------- //
+// onFocus
+function Button_OnFocus(button) {
+    // 強調表示 on
+    ButtonKyouchouOn(button);
+}
+// onBlur
+function Button_OnBlur(button) {
+    // 強調表示 off
+    ButtonKyouchouOff(button);
+}
+// onMouseOver
+function Button_OnMouseOver(button) {
+    ButtonKyouchouOn(button);
+}
+// onMouseOut
+function Button_OnMouseOut(button) {
+    ButtonKyouchouOff(button);
+}
+// onClick
+function Button_OnClick(button) {
+    // クリック
+    return ButtonClick(button);
+}
+function SetDisabled(button) {
+    button.disabled = true;
+}
+// ローカルメソッド ------------------------------------------------------------- //
+// 強調表示 on
+function ButtonKyouchouOn(button) {
+    // 枠線色
+    button.style.borderColor = button.getAttribute("FocusedBorderColor");
+      if (GetHideGradientButtonFlgValue()) return;
+      
+    if (GetHideImageButtonFlgValue()) {
+        if (button.style.backgroundPosition == null ||
+            button.style.backgroundPosition == '' ||
+            button.style.backgroundPosition == '100% 0px') {
+            button.style.backgroundPosition = '100% -60px';
+            var sObj = document.getElementById("s_" + button.id);
+            if (sObj != null){
+                sObj.style.backgroundPosition = '0 -60px';
+            }
+        }
+        else if (button.style.backgroundPosition == '100% -120px') {
+            button.style.backgroundPosition = '100% -180px';
+            var sObj = document.getElementById("s_" + button.id);
+            if (sObj != null){
+                sObj.style.backgroundPosition = '0 -180px';
+            }
+        }
+    }
+    else {
+        if (button.getAttribute("FocusedBorderStyle") != "NotSet") {
+            button.style.borderStyle = button.getAttribute("FocusedBorderStyle");
+        }
+    }
+}
+// 強調表示 off
+function ButtonKyouchouOff(button) {
+    button.style.borderColor = button.getAttribute("BorderColor");
+     if (GetHideGradientButtonFlgValue()) return;
+     
+    if (GetHideImageButtonFlgValue()) {
+        if (button.style.backgroundPosition == null ||
+            button.style.backgroundPosition == '' ||
+            button.style.backgroundPosition == '100% -60px') {
+            button.style.backgroundPosition = '100% -0px';
+            var sObj = document.getElementById("s_" + button.id);
+            if (sObj != null){
+                sObj.style.backgroundPosition = '0 0';
+            }
+        }
+        else if (button.style.backgroundPosition == '100% -180%') {
+            button.style.backgroundPosition = '100% -120px';
+            var sObj = document.getElementById("s_" + button.id);
+            if (sObj != null){
+                sObj.style.backgroundPosition = '0 -120px';
+            }
+        }
+    }
+    else {
+        if (button.getAttribute("BorderStyle") != "NotSet") {
+            button.style.borderStyle = button.getAttribute("BorderStyle");
+        }
+    }
+}
+
+// クリック
+function ButtonClick(button) {
+    // PostBack ?
+    var isPostBack = button.getAttribute("PB");
+    if (isPostBack == "True") {
+        return Double_ClickCheck();
+    } else {
+        return false;
+    }
+}
+
+function GetHideImageButtonFlgValue() {
+    var hdnName = "h_ImageButtonFlg";
+    var obj = document.getElementById(hdnName);
+    if (obj == null || obj.value != "true") {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+function GetHideGradientButtonFlgValue() {
+    var hdnName = "h_GradientButtonFlg";
+    var obj = document.getElementById(hdnName);
+    if (obj == null || obj.value != "true") {
+        return false;
+    }
+    else {
+        return true;
+    }    
+}

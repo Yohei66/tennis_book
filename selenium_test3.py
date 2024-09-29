@@ -151,10 +151,11 @@ for facility_name, days in facility_days.items():
     except NoSuchElementException:
         print(f"{facility_name} の施設要素が見つかりませんでした。")
         continue
-# ここで必要な処理を続けます
-# 例：選択を確認して次のページへ進むなど
 
-# ブラウザを閉じる場合は以下をアンコメント
-# driver.quit()
+#次（日付選択画面）に進む 
+driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+
+# 以下で日付選択する
+
 while True:
     pass

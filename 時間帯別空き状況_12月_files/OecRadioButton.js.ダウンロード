@@ -1,0 +1,255 @@
+﻿// JavaScript for OecRadioButton
+
+// イベントハンドラ ------------------------------------------------------------- //
+// onFocus
+function RadioButton_OnFocus(radioButton) {
+    // 強調表示 on
+    RadioButtonKyouchouOn(radioButton);
+}
+// onBlur
+function RadioButton_OnBlur(radioButton) {
+    // 強調表示 off
+    RadioButtonKyouchouOff(radioButton);
+}
+// onMouseOver
+function RadioButton_OnMouseOver(radioButton) {
+    RadioButtonKyouchouOn(radioButton);
+}
+// onMouseOut
+function RadioButton_OnMouseOut(radioButton) {
+    RadioButtonKyouchouOff(radioButton);
+}
+// onClick
+function RadioButton_OnClick(radioButton) {
+    // チェック on/off 処理
+
+    return RadioButtonClick(radioButton);
+}
+
+// ローカルメソッド ------------------------------------------------------------- //
+// 強調表示 on
+function RadioButtonKyouchouOn(radioButton) {
+  if (GetHideRadioGradientButtonFlgValue()) return;
+    // 枠線色
+    radioButton.style.borderColor = radioButton.getAttribute("FocusedBorderColor");
+
+    // 対応する hide項目からチェック on/off 状態を取得    
+    var hdn = GetHideRadioValue(radioButton);
+    if (hdn.value == "True") {
+        // on 時        
+        if (GetHideRadioImageButtonFlgValue()) {
+            if (radioButton.style.backgroundPosition == null ||
+                radioButton.style.backgroundPosition == '' ||
+                radioButton.style.backgroundPosition == '100% -120px') {
+                radioButton.style.backgroundPosition = '100% -180px';
+                var sObj = document.getElementById("s_" + radioButton.id);
+                if (sObj != null){
+                    sObj.style.backgroundPosition = '0 -180px';
+                }
+            }
+        }
+        else{
+            if (radioButton.getAttribute("ConflictBorderStyle") != "NotSet") {
+                radioButton.style.borderStyle = radioButton.getAttribute("ConflictBorderStyle");
+            }
+        }
+    } else {
+        // off 時
+        if (GetHideRadioImageButtonFlgValue()) {
+            if (radioButton.style.backgroundPosition == null ||
+                radioButton.style.backgroundPosition == '' ||
+                radioButton.style.backgroundPosition == '100% 0px') {
+                radioButton.style.backgroundPosition = '100% -60px';
+                var sObj = document.getElementById("s_" + radioButton.id);
+                if (sObj != null){
+                    sObj.style.backgroundPosition = '0 -60px';
+                }
+            }
+        }
+        else {
+            if (radioButton.getAttribute("FocusedBorderStyle") != "NotSet") {
+                radioButton.style.borderStyle = radioButton.getAttribute("FocusedBorderStyle");
+            }
+        }
+    }
+}
+// 強調表示 off
+function RadioButtonKyouchouOff(radioButton) {
+  if (GetHideRadioGradientButtonFlgValue()) return;
+    // 対応する hide項目からチェック on/off 状態を取得    
+    var hdn = GetHideRadioValue(radioButton);
+    if (hdn.value == "True") {
+        // on 時
+        
+        if (GetHideRadioImageButtonFlgValue()) {
+            if (radioButton.style.backgroundPosition == null ||
+                radioButton.style.backgroundPosition == '' ||
+                radioButton.style.backgroundPosition == '100% -180px') {
+                radioButton.style.backgroundPosition = '100% -120px';
+                var sObj = document.getElementById("s_" + radioButton.id);
+                if (sObj != null){
+                    sObj.style.backgroundPosition = '0 -120px';
+                }
+            }
+        }
+        else {
+            radioButton.style.borderColor = radioButton.getAttribute("CBC");
+            radioButton.style.borderStyle = radioButton.getAttribute("CBS");
+        }
+    } else {
+        // off 時
+        if (GetHideRadioImageButtonFlgValue()) {
+            if (radioButton.style.backgroundPosition == null ||
+                radioButton.style.backgroundPosition == '' ||
+                radioButton.style.backgroundPosition == '100% -60px') {
+                radioButton.style.backgroundPosition = '100% 0px';
+                var sObj = document.getElementById("s_" + radioButton.id);
+                if (sObj != null){
+                    sObj.style.backgroundPosition = '0 0';
+                }
+            }
+        }
+        else {
+            radioButton.style.borderColor = radioButton.getAttribute("BorderColor");
+            if(radioButton.getAttribute("BorderStyle") != "NotSet") {
+                radioButton.style.borderStyle = radioButton.getAttribute("BorderStyle");        
+            }
+        }
+    }
+}
+
+// チェック状態 on
+function RadioButtonClick(radioButton) {
+
+    // PostBack ?
+    var isPostBack = radioButton.getAttribute("PB");
+    if (isPostBack == "True") {
+        if (Double_ClickCheck() == false) {
+            return false;
+        }
+    }
+
+    // 対応する hide項目の取得
+    var obj = GetHideRadioValue(radioButton);
+    if (obj == null) return false;
+    
+    radioButton.focus();
+    
+    // チェック状態の解除
+    ResetCheck(radioButton);
+    
+    // off の場合 on (※既に on の場合はそのまま)
+    if (obj.value == "False") obj.value = "True";
+    
+    // 色替
+     if (GetHideRadioImageButtonFlgValue()) {
+        radioButton.style.backgroundPosition = '100% -180px';
+        var sObj = document.getElementById("s_" + radioButton.id);
+        if (sObj != null){
+            sObj.style.backgroundPosition = '0 -180px';
+        }
+    }
+   else if (GetHideRadioGradientButtonFlgValue()){
+            radioButton.className = radioButton.className.replace("Blue", "Orange")
+    }    
+    else {
+        radioButton.style.color           = radioButton.getAttribute("CFC");
+        radioButton.style.backgroundColor = radioButton.getAttribute("CC");
+        //radioButton.style.borderColor     = radioButton.getAttribute("CBC");
+        radioButton.style.borderColor     = radioButton.getAttribute("FocusedBorderColor");
+        radioButton.style.borderStyle     = radioButton.getAttribute("ConflictBorderStyle");
+    }
+    ChangeCheckCaption(radioButton, true);
+
+    // PostBack ?
+    if (isPostBack == "True") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// チェック状態 off
+function ResetCheck(radioButton) {
+
+    // 対象のグループを取得
+    var mstGrp = radioButton.getAttribute("GRP");
+    for (var i=0; i<document.forms[0].elements.length; i++) {
+        var dstGrp = document.forms[0].elements[i].getAttribute("GRP");
+        if (dstGrp == null) continue;
+        if (mstGrp != dstGrp) continue;
+        // 同一グループのチェック状態を解除
+        var radio = document.forms[0].elements[i];
+        if (GetHideRadioImageButtonFlgValue() == true) {
+            radio.style.backgroundPosition = '100% 0px';
+            var sObj = document.getElementById("s_" + radio.id);
+            if (sObj != null){
+                sObj.style.backgroundPosition = '0 0';
+            }
+        }
+        else if (GetHideRadioGradientButtonFlgValue()){
+            radio.className = radio.className.replace("Orange", "Blue")
+        }        
+        else {
+            radio.style.color           = radio.getAttribute("FC");
+            radio.style.backgroundColor = radio.getAttribute("BC");
+            radio.style.borderColor     = radio.getAttribute("BorderColor");
+            radio.style.borderStyle     = radio.getAttribute("BorderStyle");
+        }
+        // 対応する hide項目にチェック状態を保持
+        var obj = GetHideRadioValue(document.forms[0].elements[i]);
+        if (obj != null) obj.value = "False";
+        
+        ChangeCheckCaption(radio, false);
+    }
+}
+
+// 対応する hide項目の取得
+function GetHideRadioValue(radioButton) {
+    var hdnName = "h_" + radioButton.name;
+    var obj = document.forms[0].elements[hdnName];
+    return obj;
+}
+
+function GetHideRadioImageButtonFlgValue() {
+    var hdnName = "h_ImageButtonFlg";
+    var obj = document.getElementById(hdnName);
+    if (obj == null || obj.value != "true") {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+function GetHideRadioGradientButtonFlgValue() {
+    var hdnName = "h_GradientButtonFlg";
+    var obj = document.getElementById(hdnName);
+    if (obj == null || obj.value != "true") {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+function ChangeCheckCaption(radioButton, flag) {
+
+    var SELECT            = "選択";
+    var SELECT_VOICE_READ = "選択中";
+    var VOICE_READ        = "。選択中";
+
+    if (flag == true) {
+        if (radioButton.getAttribute("VR") == "True") {
+            if (radioButton.value == SELECT) {
+                radioButton.value = SELECT_VOICE_READ;
+            } else {
+                radioButton.value += VOICE_READ;
+            }
+        }
+    } else {
+        if (radioButton.value == SELECT_VOICE_READ) {
+            radioButton.value = SELECT;
+        } else {
+            radioButton.value = radioButton.value.replace(VOICE_READ, "");
+        }
+    }
+}

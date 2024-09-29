@@ -1,0 +1,101 @@
+﻿// JavaScript for OecBody
+
+// イベントハンドラ ------------------------------------------------------------- //
+
+
+// ローカルメソッド ------------------------------------------------------------- //
+// 初期フォーカス位置
+function InitFocus() {
+    minObj = null;  // min-tabindex obj
+    topObj = null;  // top obj
+    cnt = document.getElementsByTagName("input").length;
+    for(i=0; i<cnt; i++) {
+        curObj = document.getElementsByTagName("input")[i];
+        if((curObj.getAttribute("type") != "text") && 
+           (curObj.getAttribute("type") != "submit") &&
+           (curObj.getAttribute("type") != "password")) {
+            continue;
+        }
+        
+        if(curObj.getAttribute("disabled") == true ) {
+            continue;
+        }
+        
+        if(topObj == null) topObj = curObj;
+        if(curObj.getAttribute("tabindex") > 0) {
+            if(minObj == null) minObj = curObj;
+            else {
+                if(minObj.getAttribute("tabindex") > curObj.getAttribute("tabindex"))
+                    minObj = curObj;
+            }
+        }
+    }
+    try {
+        if      (minObj != null) minObj.focus();
+        else if (topObj != null) topObj.focus();
+    }
+    catch(e) {}
+    scrollTo(0,0);
+}
+
+// 初期フォーカス位置(LinkButton)
+// LinkButtonしかない画面で、一番にフォーカスを当てる //
+function InitFocusLinkButton() {
+    minObj = null;  // min-tabindex obj
+    topObj = null;  // top obj
+    cnt = document.getElementsByTagName("a").length;
+    for(i=0; i<cnt; i++) {
+        curObj = document.getElementsByTagName("a")[i];
+        if(curObj.getAttribute("href") == ""){
+            continue;
+        }
+        
+        if(curObj.getAttribute("disabled") == true){
+            continue;
+        }
+        
+        if(topObj == null) topObj = curObj;
+        if(curObj.getAttribute("tabindex") > 0){
+            if(minObj == null) minObj = curObj;
+            else {
+                if(minObj.getAttribute("tabindex") > curObj.getAttribute("tabindex"))
+                    minObj = curObj;
+            }
+        }
+    }
+    try {
+        if      (minObj != null) minObj.focus();
+        else if (topObj != null) topObj.focus();
+    }
+    catch(e) {}
+    scrollTo(0,0);
+}
+// 動作を無効にしたい場合は、以下のコメントアウトをはずす
+//function InitFocus()
+//{
+//}
+
+// ２重送信判定
+var click_flg = 0;
+function Double_ClickCheck() {
+    NoOnBeforeUnload();
+    if (click_flg == 0) {
+        click_flg = 1;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// アンロード時のダイアログを非表示にする
+// dialog_flgはBasePageのScript出力時に宣言する
+function NoOnBeforeUnload(){
+    dialog_flg = 1;
+}
+
+window.onbeforeunload = function(event){
+  event = event || window.event; 
+  if (dialog_flg == 0){
+    event.returnValue = '続行すると、最初のページに移動（またはシステムを終了）します。これまでの処理内容は失われます。';
+  }
+}

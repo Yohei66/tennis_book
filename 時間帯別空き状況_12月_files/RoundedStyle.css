@@ -1,0 +1,466 @@
+
+/*//////////////////////////////////////////////////////////*/
+/*                 青ボタンデザイン                         */
+/*//////////////////////////////////////////////////////////*/
+
+/* 14px、青 spanタグ用 */
+span.btn14_Blue
+{
+	background:url(image/btn14.gif) no-repeat;
+	height:38px;
+	max-width:95%;
+}
+/* 10px、青 spanタグ用 */
+span.btn10_Blue
+{
+	background:url(image/btn10.gif) no-repeat;
+	height:30px;
+	max-width:95%;
+}
+
+/* 14px・10px共通 青 spanタグ用 */
+span.btn14_Blue, span.btn10_Blue
+{
+	display:-moz-inline-box;
+	display:inline-block;
+	border:none;
+	text-decoration:none;
+	color:#2e523b;
+	font-style:normal;
+	margin:0 6px 0 0;
+	padding:0 6px 0 0; 
+	vertical-align:middle;
+	
+	zoom:1;
+
+	_position:relative;
+	_width:10px; 
+	_overflow-y:hidden;
+}
+
+@media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+	span.btn14_Blue, span.btn10_Blue
+	{
+		margin:0 0 0 0;
+		padding:0 0 0 0; 
+	}
+}
+
+_:-ms-lang(x),
+_:-webkit-full-screen,
+span.btn14_Blue, span.btn10_Blue 
+{
+    margin:0 0 0 0;
+	padding:0 0 0 0; 
+}
+
+/* 14px、青 button(input)タグ用 */
+span.btn14_Blue button, span.btn14_Blue input
+{
+	background:url(image/btn14.gif) 100% 0 no-repeat;
+	height:38px;
+	padding:2px 12px 0 0;
+	letter-spacing:-1;
+}
+
+/* 10px、青 button(input)タグ用 */
+span.btn10_Blue button, span.btn10_Blue input
+{
+	background:url(image/btn10.gif) 100% 0 no-repeat;
+	height:30px;
+	padding:0px 10px 0 0;
+}
+
+/* 14px・10px共通 青 button(input)タグ用 */
+span.btn14_Blue button, span.btn14_Blue input,
+span.btn10_Blue button, span.btn10_Blue input
+{
+	font-weight:normal; 
+	white-space:nowrap;
+	display:-moz-inline-box;
+	display:inline-block;
+	border:none;
+	margin:0 -16px 0 12px;
+	vertical-align:text-top;
+	background-color:Transparent !important;
+	color:black;
+
+	zoom:1;
+	_position:relative;
+	_padding-right:14px;
+	_margin-right:-10px; 
+	_display:block;
+	_top:0;
+	_right:-5px;
+}
+
+span.btn14_Blue button:disabled, span.btn14_Blue input:disabled,
+span.btn10_Blue button:disabled, span.btn10_Blue input:disabled
+{
+	color:darkgray;
+}
+
+@media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm)  {
+	span.btn14_Blue button, span.btn14_Blue input,
+	span.btn10_Blue button, span.btn10_Blue input
+	{
+		margin:0 0 0 5px;
+	}
+}
+
+_:-ms-lang(x),
+_:-webkit-full-screen,
+span.btn14_Blue button, span.btn14_Blue input,
+span.btn10_Blue button, span.btn10_Blue input 
+{
+    margin:0 0 0 5px;
+}
+
+/* 14px・10px共通 青 Hover関係 */
+/*span.btn14_Blue:hover, span.btn14_Blue-behavior-hover,
+span.btn10_Blue:hover, span.btn10_Blue-behavior-hover
+{
+	background-position:0 -60px;
+	color:#222;
+	text-decoration:none;
+}
+
+span.btn14_Blue:hover button, span.btn14_Blue-behavior-hover button, span.btn14_Blue-behavior-hover input,
+span.btn10_Blue:hover button, span.btn10_Blue-behavior-hover button, span.btn10_Blue-behavior-hover input
+{
+	background-position:100% -60px;
+}
+
+span.btn14_Blue:active, span.btn14_Blue:focus span,
+span.btn10_Blue:active, span.btn10_Blue:focus span
+{
+	background-position:0 -60px;
+	color:#3366FF;
+}
+
+span.btn14_Blue button, span.btn14_Blue input
+{
+	_behavior:expression((function(el)
+	{
+		if( typeof( behavior_onMouseEnter) == 'undefined')
+		{
+			behavior_onMouseEnter = function(el)
+			{
+				var dEl = this.parentNode; 
+				var sClass = dEl.className ;
+				dEl.__defaultClassName = sClass ;
+				dEl.className = sClass + ' btn14_Blue-behavior-hover'; 
+				this.setCapture();
+			};
+
+			behavior_onMouseLeave = function(el)
+			{
+				var dEl = this.parentNode;
+				dEl.className = dEl.__defaultClassName ;
+				dEl.__defaultClassName = undefined;
+				this.releaseCapture();
+			};
+		};
+		el.runtimeStyle.behavior = 'none';
+		el.onmouseenter = behavior_onMouseEnter;
+		el.onmouseleave = behavior_onMouseLeave;
+
+
+	})(this));
+}
+
+span.btn10_Blue button, span.btn10_Blue input
+{
+	_behavior:expression((function(el)
+	{
+		if( typeof( behavior_onMouseEnter) == 'undefined')
+		{
+			behavior_onMouseEnter = function(el)
+			{
+				var dEl = this.parentNode; 
+				var sClass = dEl.className ;
+				dEl.__defaultClassName = sClass ;
+				dEl.className = sClass + ' btn10_Blue-behavior-hover'; 
+				this.setCapture();
+			};
+
+			behavior_onMouseLeave = function(el)
+			{
+				var dEl = this.parentNode;
+				dEl.className = dEl.__defaultClassName ;
+				dEl.__defaultClassName = undefined;
+				this.releaseCapture();
+			};
+		};
+		el.runtimeStyle.behavior = 'none';
+		el.onmouseenter = behavior_onMouseEnter;
+		el.onmouseleave = behavior_onMouseLeave;
+
+
+	})(this));
+}*/
+
+
+
+
+
+/*//////////////////////////////////////////////////////////*/
+/*              オレンジボタンデザイン                      */
+/*//////////////////////////////////////////////////////////*/
+
+/* 14px、オレンジ spanタグ用 */
+span.btn14_Orange
+{
+	background:url(image/btn14.gif) no-repeat;
+	background-position:0 -120px;
+	height:38px;
+	max-width:95%;
+}
+/* 10px、オレンジ spanタグ用 */
+span.btn10_Orange
+{
+	background:url(image/btn10.gif) no-repeat;
+	background-position:0 -120px;
+	height:30px;
+	max-width:95%;
+}
+
+/* 14px・10px共通 オレンジ spanタグ用 */
+span.btn14_Orange, span.btn10_Orange
+{
+	display:-moz-inline-box;
+	display:inline-block;
+	border:none;
+	text-decoration:none;
+	color:#2e523b;
+	font-style:normal;
+	margin:0 6px 0 0;
+	padding:0 6px 0 0; 
+	vertical-align:middle;
+	
+	zoom:1;
+
+	_position:relative;
+	_width:10px; 
+	_overflow-y:hidden;
+}
+
+@media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+	span.btn14_Orange, span.btn10_Orange
+	{
+		margin:0 0 0 0;
+		padding:0 0 0 0; 
+	}
+}
+
+_:-ms-lang(x),
+_:-webkit-full-screen,
+span.btn14_Orange, span.btn10_Orange 
+{
+	margin:0 0 0 0;
+	padding:0 0 0 0; 
+}
+
+/* 14px、オレンジ button(input)タグ用 */
+span.btn14_Orange button, span.btn14_Orange input
+{
+	background:url(image/btn14.gif) 100% 0 no-repeat;
+	background-position:100% -120px;
+	height:38px;
+	padding:2px 10px 0 0;
+	margin:0 -16px 0 10px;
+	letter-spacing:-1;
+}
+
+/* 10px、オレンジ button(input)タグ用 */
+span.btn10_Orange button, span.btn10_Orange input
+{
+	background:url(image/btn10.gif) 100% 0 no-repeat;
+	background-position:100% -120px;
+	height:30px;
+	padding:0px 10px 0 0;
+	margin:0 -16px 0 10px;
+}
+
+/* 14px・10px共通 オレンジ button(input)タグ用 */
+span.btn14_Orange button, span.btn14_Orange input,
+span.btn10_Orange button, span.btn10_Orange input
+{
+	font-weight:normal; 
+	white-space:nowrap;
+	display:-moz-inline-box;
+	display:inline-block;
+	border:none;
+	margin:0 -16px 0 12px;
+	vertical-align:text-top;
+	color:black;
+
+	zoom:1;
+	
+	_position:relative;
+	_padding-right:14px;
+	_margin-right:-10px; 
+	_display:block;
+	_top:0;
+	_right:-5px;
+}
+
+span.btn14_Orange button:disabled, span.btn14_Orange input:disabled,
+span.btn10_Orange button:disabled, span.btn10_Orange input:disabled
+{
+	color:darkgray;
+}
+
+@media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+	span.btn14_Orange button, span.btn14_Orange input,
+	span.btn10_Orange button, span.btn10_Orange input
+	{
+		margin:0 0 0 5px;
+	}
+}
+
+_:-ms-lang(x),
+_:-webkit-full-screen,
+span.btn14_Orange button, span.btn14_Orange input,
+span.btn10_Orange button, span.btn10_Orange input 
+{
+	margin:0 0 0 5px;
+}
+
+/* 14px、オレンジ Hover関係 */
+/*span.btn14_Orange:hover, span.btn14_Orange-behavior-hover
+{
+	background-position:0 -180px;
+	color:#222;
+	text-decoration:none;
+}
+
+span.btn14_Orange:hover button, span.btn14_Orange-behavior-hover button, span.btn14_Orange-behavior-hover input
+{
+	background-position:100% -180px;
+}
+
+span.btn14_Orange:active, span.btn14_Orange:focus
+{
+	color:#3366FF;
+}
+
+span.btn14_Orange button, span.btn14_Orange input
+{
+	_behavior:expression((function(el)
+	{
+		if( typeof( behavior_onMouseEnter) == 'undefined')
+		{
+			behavior_onMouseEnter = function(el)
+			{
+				var dEl = this.parentNode; 
+				var sClass = dEl.className ;
+				dEl.__defaultClassName = sClass ;
+				dEl.className = sClass + ' btn14_Orange-behavior-hover'; 
+				this.setCapture();
+			};
+
+			behavior_onMouseLeave = function(el)
+			{
+				var dEl = this.parentNode;
+				dEl.className = dEl.__defaultClassName ;
+				dEl.__defaultClassName = undefined;
+				this.releaseCapture();
+			};
+		};
+		el.runtimeStyle.behavior = 'none';
+		el.onmouseenter = behavior_onMouseEnter;
+		el.onmouseleave = behavior_onMouseLeave;
+
+
+	})(this));
+}
+
+span.btn10_Orange button, span.btn10_Orange input
+{
+	_behavior:expression((function(el)
+	{
+		if( typeof( behavior_onMouseEnter) == 'undefined')
+		{
+			behavior_onMouseEnter = function(el)
+			{
+				var dEl = this.parentNode; 
+				var sClass = dEl.className ;
+				dEl.__defaultClassName = sClass ;
+				dEl.className = sClass + ' btn10_Orange-behavior-hover'; 
+				this.setCapture();
+			};
+
+			behavior_onMouseLeave = function(el)
+			{
+				var dEl = this.parentNode;
+				dEl.className = dEl.__defaultClassName ;
+				dEl.__defaultClassName = undefined;
+				this.releaseCapture();
+			};
+		};
+		el.runtimeStyle.behavior = 'none';
+		el.onmouseenter = behavior_onMouseEnter;
+		el.onmouseleave = behavior_onMouseLeave;
+
+
+	})(this));
+}*/
+
+/*//////////////////////////////////////////////////////////*/
+/*              IE以外ボタンデザイン                        */
+/*//////////////////////////////////////////////////////////*/
+
+/**** グラデーション ****/
+input.gradient_Blue14,
+input.gradient_Blue10,
+input.gradient_Orange14,
+input.gradient_Orange10{
+
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	border: 0;
+	color:black;
+}
+input.gradient_Blue14:disabled,
+input.gradient_Blue10:disabled,
+input.gradient_Orange14:disabled,
+input.gradient_Orange10:disabled{
+	color:darkgray;
+}
+input.gradient_Blue14,
+input.gradient_Orange14{
+	height: 38px;
+}
+input.gradient_Blue10,
+input.gradient_Orange10
+{
+	height: 30px;
+}
+input.gradient_Blue14,
+input.gradient_Blue10{
+	background: -moz-linear-gradient(top, #fafbfc, #afd9e7);/* Firefox用 */
+	background: -webkit-gradient(linear, left top, left bottom, from(#fafbfc), to(#afd9e7));/* Safari,Google Chrome用 */
+}
+input.gradient_Orange14,
+input.gradient_Orange10{
+	background: -moz-linear-gradient(top, #fafbfc, #ffa83f);
+	background: -webkit-gradient(linear, left top, left bottom, from(#fafbfc), to(#ffa83f));
+}	
+
+input.gradient_Blue14:hover,
+input.gradient_Blue14:focus,
+input.gradient_Blue10:hover,
+input.gradient_Blue10:focus,
+input.gradient_Orange14:hover,
+input.gradient_Orange14:focus,
+input.gradient_Orange10:focus,
+input.gradient_Orange10:hover{
+	-moz-box-shadow: 0 0 15px 0 #ff3300;	
+	-webkit-box-shadow: 0 0 15px 0 #ff3300;
+}
+
+
+

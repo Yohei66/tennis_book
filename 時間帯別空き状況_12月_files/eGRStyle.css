@@ -1,0 +1,144 @@
+/* タイトルラベルの色 */
+.TitleColor
+{
+	background-color:#BC86E4;
+	color:White;
+}
+/* タイトルラベル（休日）の色 */
+.HolidayTitleColor
+{
+	background-color:#F986E4;
+	color:White;
+}
+/* ヘッダーメイン */
+DIV.HeaderMainDiv
+{
+	background-color:#1E90FF;
+	/* 背景画像を指定したい場合は透過画像を利用すること */
+	/*background-image:url(images/FilledStar.png);
+	background-repeat:no-repeat;*/
+	width:100%;
+}
+TR.HeaderMain
+{
+	color:White;
+}
+
+/* ヘッダーサブ */
+TD.HeaderSub
+{
+	background-color:Blue;
+	height:10px;
+}
+/* フッター */
+DIV.FooterMain
+{
+	background-color:#4169E1;
+	width:100%;
+}
+/* サイドメニュー */
+.tdSideMenuPower
+{
+	width:210px;
+	border-width:2px;
+	border-style:solid;
+	border-color:#1E90FF;
+}
+.tdSideMenuNormal
+{
+	width:210px;
+	background-color:#e1e8ff;
+}
+.tdSideMenuTop
+{
+	width:260px;
+	background-color:#e1e8ff;
+}
+/* サイドメニューメイン */
+.SideMenuShori
+{
+	background-color:#1E90FF;
+	color:White;
+}
+
+/* カレンダー関係 */
+.Calendar
+{
+	background-color:White;
+	color:Black;
+	border-color:Blue;
+	
+	/* 旧Color
+	background-color:#FFFFCC;
+    color:#663399;
+	border-color:#FFCC66;
+　　*/
+}
+.Calendar_DayHeaderStyle
+{
+	background-color:Blue;
+	color:White;
+	
+	/* 旧Color
+	background-color:#FFCC66;
+	*/
+}
+.Calendar_DayStyle
+{
+	color:black;
+}
+.Calendar_NextPrevStyle
+{
+	/* aタグにcolorが指定されてしまうので上書きするため */
+	color:White!important;
+	
+	/* 旧color
+	color:#FFFFCC;
+	*/
+}
+.Calendar_OtherMonthDayStyle
+{
+	color:Gray;
+	
+	/* 旧color
+	color:#CC9966;
+	*/
+}
+.Calendar_SelectedDayStyle
+{
+	background-color:#FFC080;
+	color:Black;
+	
+	/* 旧color
+	background-color:#CCCCFF;
+	*/
+}
+.Calendar_TitleStyle
+{
+	background-color:#0091FF;
+	color:White;
+	
+	/* 旧color
+	background-color:#990000;
+	color:#FFFFCC;
+	*/
+}
+.Calendar_TodayDayStyle
+{
+	background-color:#FFCC66;
+	color:black;
+}
+.Calendar_SaturdayStyle
+{
+	background-color:#C0FFFF;
+	color:Blue;
+}
+.Calendar_SundayStyle
+{
+	background-color:#FFC0FF;
+	color:Red;
+}
+.Calendar_HolidayStyle
+{
+	color:#FF33FF;
+}

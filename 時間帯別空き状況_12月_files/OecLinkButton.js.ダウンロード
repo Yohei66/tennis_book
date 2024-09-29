@@ -1,0 +1,158 @@
+﻿// JavaScript for OecLinkButton
+
+function DCC(linkButton) {
+    // PostBack ?
+    var isPostBack = linkButton.getAttribute("PB");
+    if (isPostBack == "True") {
+        if (Double_ClickCheck() == false) {
+            return false;
+        }
+    }
+    // PostBack ?
+    if (isPostBack == "True") {
+        return true;
+    } else {
+        // 対応する hide項目を取得し値を設定
+        var obj = GetHideItem(linkButton);
+        if (obj == null) return false;
+        ChangeText(linkButton);
+        obj.value = linkButton.innerHTML;
+        return false;
+    }
+}
+// 表示の変更
+function ChangeText(linkButton) {
+
+    // 「選択」の翻訳文字列
+    var selectObj = document.forms[0].elements["h_StringSelect"];
+    // 「抽選」の翻訳文字列
+    var tyuusenObj = document.forms[0].elements["h_StringTyuusen"];
+    // 「定期」の翻訳文字列
+    var teikiObj = document.forms[0].elements["h_StringTeiki"];
+
+    var stgSelect = "";
+    if (selectObj == null) {
+        alert("選択の翻訳文字列が設定されていません。");
+        return false;
+    }
+    else{
+        stgSelect = selectObj.value;
+    }
+
+    var stgTyuusen = "";
+    if (tyuusenObj == null) {
+        alert("抽選の翻訳文字列が設定されていません。");
+        return false;
+    }
+    else{
+        stgTyuusen = tyuusenObj.value;
+    }
+
+    var stgTeiki = "";
+    if (teikiObj == null) {
+        alert("定期の翻訳文字列が設定されていません。");
+        return false;
+    }
+    else{
+        stgTeiki = teikiObj.value;
+    }
+
+    var str = linkButton.innerHTML;
+    if (str.indexOf(stgSelect, 0) == -1) {
+        // 選択数のチェック
+        if (!CheckSelected(true)) return;
+        
+        str = str.replace("&nbsp;&nbsp;", "");
+        str = str.replace("&nbsp;&nbsp;", "");
+        // Opera で空白が 0x00A0(160)で返されるため ↓
+        str = str.replace("\u00a0\u00a0", "");
+        str = str.replace("\u00a0\u00a0", "");
+        // Opera で空白が 0x00A0(160)で返されるため ↑
+        if (str.indexOf("○", 0) != -1) {
+            linkButton.innerHTML = str.replace("○", stgSelect + "○");
+        }
+        if (str.indexOf("×", 0) != -1) {
+            linkButton.innerHTML = str.replace("×", stgSelect + "×");
+        }
+        if (str.indexOf("△", 0) != -1) {
+            linkButton.innerHTML = str.replace("△", stgSelect + "△");
+        }
+        if (str.indexOf("－", 0) != -1) {
+            linkButton.innerHTML = str.replace("－", stgSelect + "－");
+        }
+        if (str.indexOf(stgTyuusen, 0) != -1) {
+           linkButton.innerHTML = str.replace(stgTyuusen, stgSelect + stgTyuusen);
+        }
+        if (str.indexOf(stgTeiki, 0) != -1) {
+           linkButton.innerHTML = str.replace(stgTeiki, stgSelect + stgTeiki);
+        }
+        // OecLinkButton.csより出力するメソッド
+        SetVisitedLinkColor(linkButton);
+    } else {
+        // 選択数のチェック
+        if (!CheckSelected(false)) return;
+        
+        if (str.indexOf(stgTyuusen, 0) == -1) {
+            linkButton.innerHTML = str.replace(stgSelect, "&nbsp;&nbsp;").concat("&nbsp;&nbsp;");
+        } 
+        else if (str.indexOf(stgTeiki, 0) == -1) {
+            linkButton.innerHTML = str.replace(stgSelect, "&nbsp;&nbsp;").concat("&nbsp;&nbsp;");
+        } 
+        else {
+            linkButton.innerHTML = str.replace(stgSelect, "");
+        }
+        // OecLinkButton.csより出力するメソッド
+        SetDefaultLinkColor(linkButton);
+   }
+}
+// 対応する隠し属性のアイテムを取得
+function GetHideItem(linkButton) {
+    var hdnName = "h_" + linkButton.id;
+    var obj = document.forms[0].elements[hdnName];
+    return obj;
+}
+// 選択数チェック
+function CheckSelected(selectFlg) {
+
+    // 最大選択数を取得
+    var maxCnt = 0;
+    var maxObj = document.forms[0].elements["h_SelectedMax"];
+    if (maxObj != null) {
+        maxCnt = eval(maxObj.value);
+    }
+    // 最大未設定時は制限なし
+    if (maxCnt == 0) return true;
+
+    // エラーメッセージの翻訳文字列
+    var AlertObj = document.forms[0].elements["h_SelectedMaxAlert"];
+    if (AlertObj == null) {
+        alert("エラーメッセージが設定されていません。");
+        return false;
+    }
+
+    // 現選択数を取得
+    var selCnt = 0;
+    var selObj = document.forms[0].elements["h_SelectedCnt"];
+    if (selObj != null) {
+        selCnt = eval(selObj.value);
+    }
+    // 選択判定
+    if (selectFlg) {
+        // 上限チェック
+        if ((selCnt+1) > maxCnt) {
+            alert(AlertObj.value);
+            return false;
+        } else {
+            // 選択数＋１
+            selCnt++;
+        }
+    } else {
+        // 選択数－１
+        selCnt--;
+    }   
+    if (selCnt < 0) selCnt = 0;
+    if (selObj != null) {
+        selObj.value = selCnt;
+    }
+    return true;
+}
