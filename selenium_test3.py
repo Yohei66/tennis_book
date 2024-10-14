@@ -203,14 +203,17 @@ try:
         print(f"{facility_name} コート選択開始。")
         # 施設要素を取得
         facility_element = get_facility_element(facility_name)
+        print(f"facility_element：{facility_element}")
         date_tables = facility_element.find_elements(
             By.XPATH, ".//table[contains(@id, '_dgTable')]"
         )
+        print(f"date_tables：{date_tables}")
 
         for dg_table_date in date_tables:
             # 日付を取得
             date_text = dg_table_date.find_element(By.XPATH, ".//tr[1]/td[1]").text
             date_match = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", date_text)
+            print(f"date_text：{date_text}")
             if date_match:
                 year = int(date_match.group(1))
                 month = int(date_match.group(2))
