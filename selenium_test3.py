@@ -34,18 +34,18 @@ password = "1234"
 # 施設ごとの設定
 facility_settings = {
     "大沼公園グラウンド": {
-        "木曜日": {"court": "共用Ｂ	", "timeslot": "9:00～13:00"},
-        "金曜日": {"court": "共用Ｂ	", "timeslot": "9:00～13:00"},
-        "土曜日": {"court": "共用Ｂ	", "timeslot": "15:00～17:00"},
-        "日曜日": {"court": "共用Ｂ	", "timeslot": "15:00～17:00"},
-        "祝日": {"court": "共用Ｂ	", "timeslot": "15:00～17:00"},
+        "木曜日": {"court": "共用Ｂ", "timeslots": ["9:00～11:00", "11:00～13:00"]},
+        "金曜日": {"court": "共用Ｂ", "timeslots": ["9:00～11:00", "11:00～13:00"]},
+        "土曜日": {"court": "共用Ｂ", "timeslots": ["15:00～17:00"]},
+        "日曜日": {"court": "共用Ｂ", "timeslots": ["15:00～17:00"]},
+        "祝日": {"court": "共用Ｂ", "timeslots": ["15:00～17:00"]},
     },
     "立沼テニス場": {
-        "火曜日": {"court": "硬式Ｂ	", "timeslot": "15:00～17:00"},
-        "水曜日": {"court": "硬式Ｂ	", "timeslot": "15:00～17:00"},
-        "土曜日": {"court": "硬式Ｂ	", "timeslot": "15:00～17:00"},
-        "日曜日": {"court": "硬式Ｂ	", "timeslot": "15:00～17:00"},
-        "祝日": {"court": "硬式Ｂ	", "timeslot": "15:00～17:00"},
+        "火曜日": {"court": "硬式Ｂ", "timeslots": ["15:00～17:00"]},
+        "水曜日": {"court": "硬式Ｂ", "timeslots": ["15:00～17:00"]},
+        "土曜日": {"court": "硬式Ｂ", "timeslots": ["15:00～17:00"]},
+        "日曜日": {"court": "硬式Ｂ", "timeslots": ["15:00～17:00"]},
+        "祝日": {"court": "硬式Ｂ", "timeslots": ["15:00～17:00"]},
     },
 }
 
@@ -127,8 +127,6 @@ for weekday in all_weekdays:
     if not checkbox.is_selected():
         checkbox.click()
 
-# driver.find_element(By.ID, "ucPCFooter_btnForward").click()
-
 # 次（日付選択画面）に進む
 driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 
@@ -156,7 +154,6 @@ try:
             print(f"{facility_name} 開始。")
             # 日付選択画面での施設要素を取得
             facility_element = get_facility_element(facility_name)
-            print(f"{facility_element} ")
             dg_table = get_dg_table(facility_element)
 
             # 対象の日付を取得
@@ -178,13 +175,14 @@ try:
             # 対象の日付の要素をクリック
             for date, setting in dates_to_click:
                 date_str = date.strftime("%Y%m%d")
-                date_id = "_b" + date_str
+                date_id = f"b{date_str}"
                 try:
                     date_element = dg_table.find_element(
                         By.XPATH, f".//a[contains(@id, '{date_id}')]"
                     )
                     date_element.click()
                     time.sleep(0.5)  # 必要に応じて調整
+                    print(f"{facility_name} の {date.strftime('%Y/%m/%d')} を選択しました。")
                 except NoSuchElementException:
                     print(f"{facility_name} の {date.strftime('%Y/%m/%d')} の要素が見つかりませんでした。")
                     continue
@@ -198,69 +196,82 @@ try:
     driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 
     # コートと時間帯の選択
-    for facility_name, settings in facility_settings.items():
-# try:
-        print(f"{facility_name} コート選択開始。")
-        # 施設要素を取得
-        facility_element = get_facility_element(facility_name)
-        print(f"facility_element：{facility_element}")
-        date_tables = facility_element.find_elements(
-            By.XPATH, ".//table[contains(@id, '_dgTable')]"
-        )
-        print(f"date_tables：{date_tables}")
+    print("コートと時間帯の選択開始。")
+    # 全ての date_tables を取得
+    date_tables = driver.find_elements(By.XPATH, "//table[contains(@id, '_dgTable')]")
+    print(f"date_tablesの数: {len(date_tables)}")
 
-        for dg_table_date in date_tables:
-            # 日付を取得
-            date_text = dg_table_date.find_element(By.XPATH, ".//tr[1]/td[1]").text
-            date_match = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", date_text)
-            print(f"date_text：{date_text}")
-            if date_match:
-                year = int(date_match.group(1))
-                month = int(date_match.group(2))
-                day = int(date_match.group(3))
-                date = datetime(year, month, day)
-                date_str = date.strftime("%Y/%m/%d")
-                weekday = date.weekday()
-                weekday_str = weekday_map[weekday]
-                is_holiday = jpholiday.is_holiday(date)
-                if is_holiday:
-                    weekday_str = "祝日"
+    for dg_table_date in date_tables:
+        # 施設名を取得
+        try:
+            facility_name_element = dg_table_date.find_element(
+                By.XPATH, "./preceding::span[contains(@id, '_lblShisetsu')][1]"
+            )
+            facility_name_text = facility_name_element.text.strip()
+        except NoSuchElementException:
+            continue
 
-                if weekday_str not in settings:
-                    continue  # 対象外の日付はスキップ
+        if facility_name_text not in facility_settings:
+            continue
 
-                setting = settings[weekday_str]
-                court_name = setting["court"]
-                timeslot = setting["timeslot"]
+        settings = facility_settings[facility_name_text]
 
-                # コートの行を特定
+        # 日付を取得
+        date_text = dg_table_date.find_element(By.XPATH, ".//tr[1]/td[1]").text
+        date_match = re.search(r"(\d{4})年(\d{1,2})月(\d{1,2})日", date_text)
+        if date_match:
+            year = int(date_match.group(1))
+            month = int(date_match.group(2))
+            day = int(date_match.group(3))
+            date = datetime(year, month, day)
+            date_str = date.strftime("%Y/%m/%d")
+            weekday = date.weekday()
+            weekday_str = weekday_map[weekday]
+            is_holiday = jpholiday.is_holiday(date)
+            if is_holiday:
+                weekday_str = "祝日"
+
+            if weekday_str not in settings:
+                continue  # 対象外の日付はスキップ
+
+            setting = settings[weekday_str]
+            court_name = setting["court"].strip()
+            timeslots = setting["timeslots"]
+
+            # コートの行を特定
+            try:
                 court_row = dg_table_date.find_element(
-                    By.XPATH, f".//tr[td[contains(text(), '{court_name}')]]"
+                    By.XPATH, f".//tr[td[normalize-space()='{court_name}']]"
                 )
+            except NoSuchElementException:
+                print(f"{facility_name_text} の {date_str} に '{court_name}' の行が見つかりませんでした。")
+                continue
 
+            for timeslot in timeslots:
                 # 時間帯の列を特定
-                timeslot_header = dg_table_date.find_element(
-                    By.XPATH, f".//tr[1]/td[contains(text(), '{timeslot}')]"
-                )
-                timeslot_index = timeslot_header.get_attribute("cellIndex")
-
-                # 対象のセルを取得
-                cell = court_row.find_element(By.XPATH, f"./td[{int(timeslot_index)+1}]")
-
-                # 空き状況を確認し、クリック可能ならクリック
                 try:
-                    link = cell.find_element(By.TAG_NAME, "a")
-                    link.click()
-                    time.sleep(0.5)  # 必要に応じて調整
-                    print(f"{facility_name} の {date_str} {court_name} {timeslot} を選択しました。")
+                    timeslot_header = dg_table_date.find_element(
+                        By.XPATH, f".//tr[1]/td[contains(normalize-space(translate(., '\n', '')), '{timeslot}')]"
+                    )
+                    timeslot_index = timeslot_header.get_attribute("cellIndex")
+
+                    # 対象のセルを取得
+                    cell = court_row.find_element(By.XPATH, f"./td[{int(timeslot_index)+1}]")
+
+                    # 空き状況を確認し、クリック可能ならクリック
+                    try:
+                        link = cell.find_element(By.TAG_NAME, "a")
+                        link.click()
+                        time.sleep(0.5)  # 必要に応じて調整
+                        print(f"{facility_name_text} の {date_str} {court_name} {timeslot} を選択しました。")
+                    except NoSuchElementException:
+                        status = cell.text.strip()
+                        print(f"{facility_name_text} の {date_str} {court_name} {timeslot} は予約できません。状態：{status}")
                 except NoSuchElementException:
-                    status = cell.text.strip()
-                    print(f"{facility_name} の {date_str} {court_name} {timeslot} は予約できません。状態：{status}")
+                    print(f"{facility_name_text} の {date_str} に時間帯 '{timeslot}' が見つかりませんでした。")
+                    continue
 
-        print(f"{facility_name} コート選択完了")
-except NoSuchElementException:
-        print(f"{facility_name} の施設要素が見つかりませんでした。")
-
+    print("コートと時間帯の選択完了")
 
 except Exception as e:
     print(f"エラーが発生しました: {e}")
@@ -268,10 +279,5 @@ except Exception as e:
 finally:
     # ブラウザを閉じずに処理を続行する
     print("ブラウザは開いたままです。")
-# 必要な処理を続行（例：予約の確認や確定など）
-
-# ブラウザを閉じる場合は以下をアンコメント
-# driver.quit()
-
-while True:
-    pass
+    while True:
+        pass
