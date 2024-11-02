@@ -1,4 +1,5 @@
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -67,7 +68,7 @@ options = Options()
 service = Service("C:/chromedriver-win64/chromedriver.exe")
 
 # WebDriverを初期化
-driver = webdriver.Chrome(service=service, options=options)
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 driver.get("https://www.pf489.com/kasukabe/web/Wg_ModeSelect.aspx")
 driver.maximize_window()
@@ -205,8 +206,9 @@ try:
         # 施設名を取得
         try:
             facility_name_element = dg_table_date.find_element(
-                By.XPATH, "./preceding::span[contains(@id, '_lblShisetsu')][1]"
+                By.XPATH, "./preceding::*[contains(@id, '_lblShisetsu') or contains(@id, '_lnkShisetsu')][1]"
             )
+
             facility_name_text = facility_name_element.text.strip()
         except NoSuchElementException:
             continue
@@ -273,8 +275,21 @@ try:
 
     print("コートと時間帯の選択完了")
 
+    # 次（確認画面）に進む
+    driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+    
+    # 6人にする
+    driver.find_element(By.ID, "txtNinzu").send_keys("6")
+    # 他も全てこれにするボタンを押下
+    driver.find_element(By.ID, "orbCopyYes").click()
+    # 次（申し込み画面）に進む
+    driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+    #申し込みボタンで完了    
+    driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+    
 except Exception as e:
     print(f"エラーが発生しました: {e}")
+
 
 finally:
     # ブラウザを閉じずに処理を続行する
