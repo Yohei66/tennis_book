@@ -1,4 +1,4 @@
-import pandas as pd  # 追加
+import pandas as pd
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
@@ -13,17 +13,21 @@ from selenium.common.exceptions import (
     NoAlertPresentException,
     NoSuchElementException,
     UnexpectedAlertPresentException,
+    TimeoutException
 )
 import calendar
 import time
 import re
 import jpholiday
+import os
+import base64
 
 # Excelファイルの読み込み
 excel_file = 'tennis_book_table.xlsx'  # Excelファイル名を指定してください
-credentials_df = pd.read_excel(excel_file, sheet_name='UserCredentials', dtype={'ID': str})
-booking_df = pd.read_excel(excel_file, sheet_name='BookingSettings', dtype={'ID': str})
 
+# ID列を文字列型として読み込む
+credentials_df = pd.read_excel(excel_file, sheet_name='UserCredentials', dtype={'ID': str})
+timepattern_df = pd.read_excel(excel_file, sheet_name='TimePattern')
 
 # 今日の日付を取得
 today = datetime.today()
@@ -54,18 +58,24 @@ options = Options()
 for index, user in credentials_df.iterrows():
     id = str(user['ID'])
     password = str(user['Password'])
+    time_pattern = user['TimePattern']
     
     # ユーザーの予約設定を取得
-    user_booking_df = booking_df[booking_df['ID'] == id]
+    user_booking_df = timepattern_df[timepattern_df['TimePattern'] == time_pattern]
+    
+    # デバッグ用の出力
+    print(f"\n=== {id} の予約処理を開始します ===")
+    print(f"TimePattern: {time_pattern}")
+    print("User booking settings:")
+    print(user_booking_df)
     
     # facility_settingsを構築
     facility_settings = {}
     for _, row in user_booking_df.iterrows():
         facility_name = row['FacilityName']
-        print(f"facility_name")
         weekday = row['Weekday']
         court = row['Court']
-        timeslot = row['Timeslot'].strip()
+        timeslot = str(row['Timeslot']).strip()
         
         if facility_name not in facility_settings:
             facility_settings[facility_name] = {}
@@ -75,8 +85,15 @@ for index, user in credentials_df.iterrows():
             facility_settings[facility_name][weekday][court] = []
         
         facility_settings[facility_name][weekday][court].append(timeslot)
-    print(f"\n=== {id} の予約処理を開始します ===")
-    print(f"facility_settings: {facility_settings}")
+    
+    # デバッグ：facility_settingsを表示
+    print(f"\nConstructed facility_settings for ID {id}:")
+    print(facility_settings)
+    
+    # facility_settingsが空の場合、次のユーザーに進む
+    if not facility_settings:
+        print(f"{id} の予約設定がありません。次のユーザーに進みます。")
+        continue
     
     # WebDriverを初期化
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
@@ -95,7 +112,7 @@ for index, user in credentials_df.iterrows():
         wait.until(EC.alert_is_present())
         alert = driver.switch_to.alert
         alert.accept()
-    except NoAlertPresentException:
+    except TimeoutException:
         pass
 
     driver.find_element(By.ID, "btnNormal").click()
@@ -299,10 +316,62 @@ for index, user in credentials_df.iterrows():
         driver.find_element(By.ID, "orbCopyYes").click()
         # 次（申し込み画面）に進む
         driver.find_element(By.ID, "ucPCFooter_btnForward").click()
-        # 申し込みボタンで完了    
-        driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+       
+        # 完了ボタン押下後のアラート処理とスクリーンショット保存
+        try:
+            # 完了ボタンをクリック
+            driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+            
+            # アラートが表示された場合、予約済みとして処理を終了
+            try:
+                WebDriverWait(driver, 5).until(EC.alert_is_present())
+                alert = driver.switch_to.alert
+                print("予約済みです。処理を中止します。")
+                alert.accept()
+                continue  # 次のユーザーの処理へ
+            except TimeoutException:
+                # アラートが表示されなかった場合、次の画面に遷移したと判断
+                pass
+            
+            # 現在のスクリプトのディレクトリを基準に、PDFフォルダのパスを取得
+            script_dir = os.path.dirname(os.path.abspath(__file__))  # Pythonファイルのディレクトリ
+            base_dir = os.path.join(script_dir, "PDF")  # PDFフォルダへの相対パス
+
+            # 今月のフォルダ名を生成
+            current_month_folder = datetime.now().strftime('%Y%m')  # 「YYYYMM」形式でフォルダ名を生成
+            output_dir = os.path.join(base_dir, current_month_folder)  # 今月のフォルダのパス
+
+            # フォルダが存在しない場合、作成
+            os.makedirs(output_dir, exist_ok=True)
+
+            # PDFファイル名をIDと日時で設定
+            current_time = datetime.now().strftime('%Y%m%d_%H%M%S')  # 日時を「YYYYMMDD_HHMMSS」の形式で取得
+            pdf_file_name = f"{id}_{current_time}.pdf"  # ファイル名を「ID_YYYYMMDD_HHMMSS.pdf」に設定
+            pdf_file_path = os.path.join(output_dir, pdf_file_name)
+
+            # PDFの保存設定
+            settings = {
+                'landscape': False,                # 縦向き
+                'displayHeaderFooter': False,
+                'printBackground': True,           # 背景を含める
+                'preferCSSPageSize': True
+            }
+
+            # Chromeのデベロッパー機能を使ってページをPDFとして保存
+            pdf_data = driver.execute_cdp_cmd("Page.printToPDF", settings)
+
+            # PDFファイルとして保存
+            with open(pdf_file_path, 'wb') as f:
+                f.write(base64.b64decode(pdf_data['data']))
+
+            print(f"ページ全体をPDFとして保存しました: {pdf_file_path}")
+            
+            
+        except Exception as e:
+            print(f"エラーが発生しました: {e}")
 
         print(f"{id} の予約処理が完了しました。")
+                    
 
     except Exception as e:
         print(f"エラーが発生しました: {e}")
