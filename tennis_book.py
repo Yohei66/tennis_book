@@ -1,4 +1,4 @@
-import pandas as pd  # 追加
+import pandas as pd
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
@@ -13,6 +13,7 @@ from selenium.common.exceptions import (
     NoAlertPresentException,
     NoSuchElementException,
     UnexpectedAlertPresentException,
+    TimeoutException
 )
 import calendar
 import time
@@ -20,14 +21,13 @@ import re
 import jpholiday
 import os
 import base64
-from selenium.common.exceptions import TimeoutException
-
 
 # Excelファイルの読み込み
 excel_file = 'tennis_book_table.xlsx'  # Excelファイル名を指定してください
-credentials_df = pd.read_excel(excel_file, sheet_name='UserCredentials', dtype={'ID': str})
-booking_df = pd.read_excel(excel_file, sheet_name='BookingSettings', dtype={'ID': str})
 
+# ID列を文字列型として読み込む
+credentials_df = pd.read_excel(excel_file, sheet_name='UserCredentials', dtype={'ID': str})
+timepattern_df = pd.read_excel(excel_file, sheet_name='TimePattern')
 
 # 今日の日付を取得
 today = datetime.today()
@@ -58,18 +58,24 @@ options = Options()
 for index, user in credentials_df.iterrows():
     id = str(user['ID'])
     password = str(user['Password'])
+    time_pattern = user['TimePattern']
     
     # ユーザーの予約設定を取得
-    user_booking_df = booking_df[booking_df['ID'] == id]
+    user_booking_df = timepattern_df[timepattern_df['TimePattern'] == time_pattern]
+    
+    # デバッグ用の出力
+    print(f"\n=== {id} の予約処理を開始します ===")
+    print(f"TimePattern: {time_pattern}")
+    print("User booking settings:")
+    print(user_booking_df)
     
     # facility_settingsを構築
     facility_settings = {}
     for _, row in user_booking_df.iterrows():
         facility_name = row['FacilityName']
-        print(f"facility_name")
         weekday = row['Weekday']
         court = row['Court']
-        timeslot = row['Timeslot'].strip()
+        timeslot = str(row['Timeslot']).strip()
         
         if facility_name not in facility_settings:
             facility_settings[facility_name] = {}
@@ -79,8 +85,15 @@ for index, user in credentials_df.iterrows():
             facility_settings[facility_name][weekday][court] = []
         
         facility_settings[facility_name][weekday][court].append(timeslot)
-    print(f"\n=== {id} の予約処理を開始します ===")
-    print(f"facility_settings: {facility_settings}")
+    
+    # デバッグ：facility_settingsを表示
+    print(f"\nConstructed facility_settings for ID {id}:")
+    print(facility_settings)
+    
+    # facility_settingsが空の場合、次のユーザーに進む
+    if not facility_settings:
+        print(f"{id} の予約設定がありません。次のユーザーに進みます。")
+        continue
     
     # WebDriverを初期化
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
@@ -99,7 +112,7 @@ for index, user in credentials_df.iterrows():
         wait.until(EC.alert_is_present())
         alert = driver.switch_to.alert
         alert.accept()
-    except NoAlertPresentException:
+    except TimeoutException:
         pass
 
     driver.find_element(By.ID, "btnNormal").click()
@@ -357,11 +370,7 @@ for index, user in credentials_df.iterrows():
         except Exception as e:
             print(f"エラーが発生しました: {e}")
 
-
-            # 申し込みボタンで完了    
-            # driver.find_element(By.ID, "ucPCFooter_btnForward").click()
-
-            print(f"{id} の予約処理が完了しました。")
+        print(f"{id} の予約処理が完了しました。")
                     
 
     except Exception as e:

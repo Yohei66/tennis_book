@@ -3,5 +3,4 @@
  ```
 
 ## 以下インストール
-``` pip install webdriver_manager```
-``` pip install pandas openpyxl ```
+``` pip install pandas openpyxl jpholiday selenium webdriver_manager ```
