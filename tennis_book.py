@@ -18,6 +18,10 @@ import calendar
 import time
 import re
 import jpholiday
+import os
+import base64
+from selenium.common.exceptions import TimeoutException
+
 
 # Excelファイルの読み込み
 excel_file = 'tennis_book_table.xlsx'  # Excelファイル名を指定してください
@@ -299,10 +303,66 @@ for index, user in credentials_df.iterrows():
         driver.find_element(By.ID, "orbCopyYes").click()
         # 次（申し込み画面）に進む
         driver.find_element(By.ID, "ucPCFooter_btnForward").click()
-        # 申し込みボタンで完了    
-        driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+       
+        # 完了ボタン押下後のアラート処理とスクリーンショット保存
+        try:
+            # 完了ボタンをクリック
+            driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+            
+            # アラートが表示された場合、予約済みとして処理を終了
+            try:
+                WebDriverWait(driver, 5).until(EC.alert_is_present())
+                alert = driver.switch_to.alert
+                print("予約済みです。処理を中止します。")
+                alert.accept()
+                continue  # 次のユーザーの処理へ
+            except TimeoutException:
+                # アラートが表示されなかった場合、次の画面に遷移したと判断
+                pass
+            
+            # 現在のスクリプトのディレクトリを基準に、PDFフォルダのパスを取得
+            script_dir = os.path.dirname(os.path.abspath(__file__))  # Pythonファイルのディレクトリ
+            base_dir = os.path.join(script_dir, "PDF")  # PDFフォルダへの相対パス
 
-        print(f"{id} の予約処理が完了しました。")
+            # 今月のフォルダ名を生成
+            current_month_folder = datetime.now().strftime('%Y%m')  # 「YYYYMM」形式でフォルダ名を生成
+            output_dir = os.path.join(base_dir, current_month_folder)  # 今月のフォルダのパス
+
+            # フォルダが存在しない場合、作成
+            os.makedirs(output_dir, exist_ok=True)
+
+            # PDFファイル名をIDと日時で設定
+            current_time = datetime.now().strftime('%Y%m%d_%H%M%S')  # 日時を「YYYYMMDD_HHMMSS」の形式で取得
+            pdf_file_name = f"{id}_{current_time}.pdf"  # ファイル名を「ID_YYYYMMDD_HHMMSS.pdf」に設定
+            pdf_file_path = os.path.join(output_dir, pdf_file_name)
+
+            # PDFの保存設定
+            settings = {
+                'landscape': False,                # 縦向き
+                'displayHeaderFooter': False,
+                'printBackground': True,           # 背景を含める
+                'preferCSSPageSize': True
+            }
+
+            # Chromeのデベロッパー機能を使ってページをPDFとして保存
+            pdf_data = driver.execute_cdp_cmd("Page.printToPDF", settings)
+
+            # PDFファイルとして保存
+            with open(pdf_file_path, 'wb') as f:
+                f.write(base64.b64decode(pdf_data['data']))
+
+            print(f"ページ全体をPDFとして保存しました: {pdf_file_path}")
+            
+            
+        except Exception as e:
+            print(f"エラーが発生しました: {e}")
+
+
+            # 申し込みボタンで完了    
+            # driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+
+            print(f"{id} の予約処理が完了しました。")
+                    
 
     except Exception as e:
         print(f"エラーが発生しました: {e}")
