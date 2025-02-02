@@ -137,6 +137,8 @@ for i, user in credentials_df.iterrows():
         except TimeoutException:
             pass
 
+        print("ログイン後 - 利用方法選択へ遷移")
+
         # --- 通常利用方法など一連の操作 ---
         driver.find_element(By.ID, "btnNormal").click()
         driver.find_element(By.ID, "rbtnYoyaku").click()
@@ -146,18 +148,24 @@ for i, user in credentials_df.iterrows():
         driver.find_element(By.ID, "ucPCFooter_btnForward").click()
         driver.find_element(By.ID, "ucPCFooter_btnForward").click()
 
+        print("利用目的・種別を選択完了")
+
         # 施設選択
         all_facilities = set(normal_facility_settings.keys()).union(
             set(user_special_facility.keys())
         )
+        print(f"▼ 選択対象の施設一覧: {list(all_facilities)}")
         for fac_name in all_facilities:
             try:
-                driver.find_element(By.XPATH, f"//input[@value='{fac_name}']").click()
+                print(f"施設チェック: {fac_name} のチェックボックスを探します")
+                elem_fac = driver.find_element(By.XPATH, f"//input[@value='{fac_name}']")
+                elem_fac.click()
+                print(f" → {fac_name} チェック成功")
             except NoSuchElementException:
-                print(f"施設チェックボックス見つからず: {fac_name}")
-                continue
+                print(f" → 施設チェックボックス見つからず: {fac_name} (スキップ)")
 
         driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+        print("施設選択完了")
 
         # 日付設定 (2025/05/01 のように 3か月後の year/month/1日)
         txtYear = driver.find_element(By.ID, "txtYear")
@@ -171,47 +179,52 @@ for i, user in credentials_df.iterrows():
         txtDay = driver.find_element(By.ID, "txtDay")
         txtDay.clear()
         txtDay.send_keys("1")
+        
+        driver.find_element(By.ID, "rbtnMonth").click()
 
-        # ここで週表示/1ヶ月表示の切り替えがあれば(例) driver.find_element(By.ID,"rbtnMonth").click()
         # 曜日のチェックボックスをすべてON
         all_weekdays = ["月", "火", "水", "木", "金", "土", "日", "祝"]
         for w in all_weekdays:
-            chk = driver.find_element(By.XPATH, f"//table[@id='Table6']//input[@value='{w}']")
-            if not chk.is_selected():
-                chk.click()
+            try:
+                chk = driver.find_element(By.XPATH, f"//table[@id='Table6']//input[@value='{w}']")
+                if not chk.is_selected():
+                    chk.click()
+                #print(f"曜日チェック: {w} (ON済)")
+            except NoSuchElementException:
+                print(f"曜日チェックボックスが見つからない: {w}")
 
         # 次へ（施設別空き状況ページ）
         driver.find_element(By.ID, "ucPCFooter_btnForward").click()
         time.sleep(2)
 
-            # (1) ページ内の "抽選" リンクを全て取得
-        all_chusen_links = driver.find_elements(By.XPATH, "//a[text()='抽選']")
+        print("(A) 施設別空き状況ページ到達")
 
+        # (A)-1) "抽選"リンクを全てクリック
+        all_chusen_links = driver.find_elements(By.XPATH, "//a[text()='抽選']")
         print(f"抽選リンクの件数: {len(all_chusen_links)}")
 
-        # (2) 連続クリック
         for link in all_chusen_links:
             try:
+                # デバッグ: リンクの outerHTML などを確認すると、何が取得されているか分かりやすい
+                # print("抽選リンクHTML:", link.get_attribute('outerHTML'))
                 link.click()
-                print("抽選を1件クリックしました。")
-                time.sleep(0.2)  # 画面が反応するのを待つ
+                print(" → 抽選を1件クリックしました。")
+                time.sleep(0.2)
             except Exception as e:
-                print(f"クリック失敗: {e}")
+                print(f"抽選クリック失敗: {e}")
 
-        # (3) もしこの後に「次へ」「前へ」リンクがあって複数ページ操作する場合は、
-        #     ここで "次へ >>" の要素を探してクリック→再度 chusen_links を取り直す... などを繰り返す。
-
-        # 「次へ >>」ボタン（申込の次画面へ）
+        # (A)-2) 「次へ >>」ボタン（時間帯別空き状況ページへ）
         driver.find_element(By.ID, "ucPCFooter_btnForward").click()
         time.sleep(2)
 
-        # ----------------------------------
-        # (B) 時間帯別空き状況ページ
-        #     → ここで実際に日付(YYYY年MM月DD日)を抽出して
-        #        特別日／通常予約を振り分ける
-        # ----------------------------------
+        print("(B) 時間帯別空き状況ページ到達 - ここでコート/時間帯をクリック")
+
+        # ここで 1つでもクリックできたかどうかのフラグ
+        any_timeslot_clicked = False
+
         date_pattern_head = re.compile(r'(\d{4})年(\d{1,2})月(\d{1,2})日')
         date_tables = driver.find_elements(By.XPATH, "//table[contains(@id, '_dgTable')]")
+        print(f"  → 日付テーブル数: {len(date_tables)}")
 
         for date_table in date_tables:
             # ヘッダーの「TitleColor」行から日付テキストを取る
@@ -219,38 +232,41 @@ for i, user in credentials_df.iterrows():
                 title_cell = date_table.find_element(By.XPATH, ".//tr[@class='TitleColor']/td[1]")
                 date_text = title_cell.text.strip()
             except NoSuchElementException:
+                print("    → TitleColor行が見つからないテーブル(スキップ)")
                 continue
 
             match_date = date_pattern_head.search(date_text)
             if not match_date:
-                print(f"このテーブルに日付がない: {date_text}")
+                print(f"    → 日付テキスト解析できず: {date_text} (スキップ)")
                 continue
 
             y = int(match_date.group(1))
             m = int(match_date.group(2))
             d = int(match_date.group(3))
             date_obj = datetime(y, m, d)
+            print(f"\n  *** 対象日付テーブル: {date_obj.strftime('%Y/%m/%d')} ***")
 
-            # 特別日かどうか
+            # 特別日 or 通常日を判定
             if date_obj in special_dates and time_pattern in special_facility_settings:
                 fac_setting = special_facility_settings[time_pattern]
                 day_key = "特別日"
-                print(f"【特別日】 {date_obj.strftime('%Y/%m/%d')}")
+                print(f"    → {date_obj.strftime('%Y/%m/%d')} は特別日")
             else:
                 fac_setting = normal_facility_settings
                 wd = date_obj.weekday()
                 day_key = weekday_map[wd]
                 if jpholiday.is_holiday(date_obj):
                     day_key = "祝日"
+                print(f"    → {date_obj.strftime('%Y/%m/%d')} は day_key={day_key}")
 
-            # 施設名を取得
+            # 施設名の取得
             try:
                 facility_label = date_table.find_element(
                     By.XPATH, ".//ancestor::table[contains(@id,'tpItem')][1]//span[contains(@id,'lblShisetsu')]"
                 )
                 facility_name_text = facility_label.text.strip()
             except NoSuchElementException:
-                # 施設リンクの場合
+                # 施設がaタグになってるケース
                 try:
                     facility_link = date_table.find_element(
                         By.XPATH, ".//ancestor::table[contains(@id,'tpItem')][1]//a[contains(@id,'lnkShisetsu')]"
@@ -260,14 +276,22 @@ for i, user in credentials_df.iterrows():
                     facility_name_text = ""
 
             if facility_name_text not in fac_setting:
-                continue
-            if day_key not in fac_setting[facility_name_text]:
+                print(f"    → 施設:{facility_name_text} は設定に存在せず(スキップ)")
                 continue
 
-            # コート×時間帯を順番に予約click
+            if day_key not in fac_setting[facility_name_text]:
+                print(f"    → day_key:{day_key} は {facility_name_text} の設定に存在しない(スキップ)")
+                continue
+
             court_dict = fac_setting[facility_name_text][day_key]
-            # 行リスト (タイトル行以外)
+
+            # タイトル行以外を取得
             row_list = date_table.find_elements(By.XPATH, ".//tr[not(@class='TitleColor')]")
+            print(f"    → コート行の件数: {len(row_list)}")
+            # ヘッダー行(時間帯セル)
+            header_cells = date_table.find_elements(By.XPATH, ".//tr[@class='TitleColor']/td")
+            print(f"    → ヘッダセルの件数: {len(header_cells)}")
+
             for row_elem in row_list:
                 try:
                     court_name = row_elem.find_element(By.XPATH, ".//td[1]").text.strip()
@@ -275,41 +299,65 @@ for i, user in credentials_df.iterrows():
                     continue
 
                 if court_name not in court_dict:
+                    # デバッグ: コート名がマッチしない理由を調べる
+                    # print(f"      → コート:{court_name} は設定に無いのでスキップ")
                     continue
 
                 timeslots = court_dict[court_name]
                 if not timeslots:
+                    print(f"      → コート:{court_name} は設定にTimeslotが無い (スキップ)")
                     continue
 
-                # ヘッダーの時間帯セル
-                header_cells = date_table.find_elements(By.XPATH, ".//tr[@class='TitleColor']/td")
+                # ヘッダーの時間帯セルを順にチェック
                 for tslot in timeslots:
                     found_col_index = None
                     for c_idx in range(2, len(header_cells)):
-                        head_text = header_cells[c_idx].text.replace('\n','').replace(' ','')
-                        # 例) "9:00～11:00"
+                        # 例) ヘッダセルテキスト: "9:00～11:00" (改行・空白削除)
+                        head_text_raw = header_cells[c_idx].text
+                        head_text = head_text_raw.replace('\n','').replace(' ','')
+                        
+                        # デバッグ出力
+                        # print(f"        ヘッダ比較: tslot={tslot} / head_text={head_text}")
+                        
                         if tslot == head_text:
                             found_col_index = c_idx
                             break
+
                     if found_col_index is None:
-                        print(f"{facility_name_text} {court_name} {tslot} 見つからず")
+                        print(f"      → (不一致) {facility_name_text}/{court_name}/"
+                              f"{tslot} がヘッダと合わずクリック不可")
                         continue
 
-                    # クリック
+                    # クリック対象のセルを取得
                     try:
                         cell = row_elem.find_element(By.XPATH, f"./td[{found_col_index+1}]")
+                    except NoSuchElementException:
+                        print(f"      → 該当セルが存在しない (colIndex={found_col_index})")
+                        continue
+
+                    # aタグがあるかどうかチェック
+                    try:
                         link = cell.find_element(By.TAG_NAME, "a")
                         link.click()
-                        print(f"予約選択: {date_obj.strftime('%Y/%m/%d')} {facility_name_text} {court_name} {tslot}")
+                        print(f"      → 予約選択: {date_obj.strftime('%Y/%m/%d')} {facility_name_text} {court_name} {tslot}")
+                        any_timeslot_clicked = True
                         time.sleep(0.2)
                     except NoSuchElementException:
                         status = cell.text.strip() if cell else "不明"
-                        print(f"予約不可: {facility_name_text} {court_name} {tslot} → {status}")
+                        print(f"      → 予約不可: {facility_name_text} {court_name} {tslot} → {status}")
+
+        # もし1つも時間帯クリックが無かった場合、次ページでエラーになるので注意
+        if not any_timeslot_clicked:
+            print("◆◆◆ このページで1枠も時間帯をクリックしなかったため、次画面でエラーになる可能性があります ◆◆◆")
+            # 必要に応じて下記のようにスキップする:
+            # driver.quit()
+            # continue
 
         # -----------------------------
         # (C) 確認画面 → 申し込み → PDF保存
         # -----------------------------
         driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+        print("(C) 確認画面へ遷移")
 
         # 人数6人
         try:
@@ -319,10 +367,11 @@ for i, user in credentials_df.iterrows():
             pass
 
         driver.find_element(By.ID, "ucPCFooter_btnForward").click()
+        print("人数・コピー選択完了")
 
         try:
             driver.find_element(By.ID, "ucPCFooter_btnForward").click()
-            # アラートが出る場合(既に予約済など)
+            # アラートが出る場合(既に予約済など)をハンドリング
             try:
                 WebDriverWait(driver, 3).until(EC.alert_is_present())
                 alert = driver.switch_to.alert
