@@ -104,6 +104,7 @@ options = Options()
 # -----------------------------
 for i, user in credentials_df.iterrows():
     user_id = user['ID']
+    user_name = user['Name']
     password = user['Password']
     time_pattern = str(user['TimePattern']).strip()
 
@@ -264,9 +265,9 @@ for i, user in credentials_df.iterrows():
 
             # 特別日 or 通常日を判定
             if date_obj.date() in special_dates and time_pattern in special_facility_settings:
+                fac_setting = special_facility_settings[time_pattern]
                 day_key = "特別日"
             # if date_obj in special_dates and time_pattern in special_facility_settings:
-            #     fac_setting = special_facility_settings[time_pattern]
             #     day_key = "特別日"
                 print(f"    → {date_obj.strftime('%Y/%m/%d')} は特別日")
             else:
@@ -399,12 +400,17 @@ for i, user in credentials_df.iterrows():
             except TimeoutException:
                 pass
 
+
+    
             # PDF保存
             script_dir = os.path.dirname(os.path.abspath(__file__))
             base_dir = os.path.join(script_dir, "PDF")
-            os.makedirs(base_dir, exist_ok=True)
+            # 今月のフォルダ名を生成
+            current_month_folder = datetime.now().strftime('%Y%m')  # 「YYYYMM」形式でフォルダ名を生成
+            output_dir = os.path.join(base_dir, current_month_folder)  # 今月のフォルダのパス
+            os.makedirs(output_dir, exist_ok=True)
             now_str = datetime.now().strftime('%Y%m%d_%H%M%S')
-            pdf_name = f"{user_id}_{now_str}.pdf"
+            pdf_name = f"{user_id}_{user_name}_{now_str}.pdf"
             pdf_path = os.path.join(base_dir, pdf_name)
 
             settings = {
