@@ -262,7 +262,7 @@ for i, user in credentials_df.iterrows():
             # 施設名の取得
             try:
                 facility_label = date_table.find_element(
-                    By.XPATH, ".//ancestor::table[contains(@id,'tpItem')][1]//span[contains(@id,'lblShisetsu')]"
+                    By.XPATH, "./preceding::*[contains(@id, '_lblShisetsu') or contains(@id, '_lnkShisetsu')][1]"
                 )
                 facility_name_text = facility_label.text.strip()
             except NoSuchElementException:
