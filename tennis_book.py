@@ -30,7 +30,6 @@ timepattern_df = pd.read_excel(excel_file, sheet_name='TimePattern')
 special_date_df = pd.read_excel(excel_file, sheet_name='SpecialDate')
 special_book_df = pd.read_excel(excel_file, sheet_name='SpecialBook')
 
-# 日付文字列(例 '2025年5月18日') を datetime に変換する関数
 date_pattern_jp = re.compile(r'(\d{4})年(\d{1,2})月(\d{1,2})日')
 def parse_jp_date(date_str):
     match = date_pattern_jp.match(str(date_str))
@@ -40,7 +39,24 @@ def parse_jp_date(date_str):
     return None
 
 special_date_df['ParsedDate'] = special_date_df['SpecialDate'].apply(parse_jp_date)
-special_dates = set(special_date_df['ParsedDate'].dropna().tolist())
+# special_dates = set(special_date_df['ParsedDate'].dropna().tolist())
+special_dates = set(d.date() for d in special_date_df['SpecialDate'].dropna())
+# ===== デバッグ出力ここから =====
+print("=== [DEBUG] SpecialDate シート内容 ===")
+print(special_date_df)  # Excelから読み込んだ行をそのまま確認
+print("\n=== [DEBUG] parse_jp_date の結果 ===")
+for idx, row in special_date_df.iterrows():
+    raw_str = row['SpecialDate']
+    parsed = parse_jp_date(raw_str)
+    print(f"  行{idx}: 原文={repr(raw_str)} → 変換={parsed}")
+
+print("\n=== [DEBUG] special_dates に格納された日付 ===")
+for d in special_dates:
+    print("  ", d)
+print("======================================\n")
+# ===== デバッグ出力ここまで =====
+
+# ...以下、特別facility_settingsの作成処理など
 
 # 特別用 facility_settings: {TimePattern: {FacilityName: {"特別日": {Court:[Timeslot,...]}}}}
 special_facility_settings = {}
@@ -247,9 +263,11 @@ for i, user in credentials_df.iterrows():
             print(f"\n  *** 対象日付テーブル: {date_obj.strftime('%Y/%m/%d')} ***")
 
             # 特別日 or 通常日を判定
-            if date_obj in special_dates and time_pattern in special_facility_settings:
-                fac_setting = special_facility_settings[time_pattern]
+            if date_obj.date() in special_dates and time_pattern in special_facility_settings:
                 day_key = "特別日"
+            # if date_obj in special_dates and time_pattern in special_facility_settings:
+            #     fac_setting = special_facility_settings[time_pattern]
+            #     day_key = "特別日"
                 print(f"    → {date_obj.strftime('%Y/%m/%d')} は特別日")
             else:
                 fac_setting = normal_facility_settings
