@@ -411,8 +411,7 @@ for i, user in credentials_df.iterrows():
             os.makedirs(output_dir, exist_ok=True)
             now_str = datetime.now().strftime('%Y%m%d_%H%M%S')
             pdf_name = f"{user_id}_{user_name}_{now_str}.pdf"
-            pdf_path = os.path.join(base_dir, pdf_name)
-
+            pdf_path = os.path.join(output_dir, pdf_name)
             settings = {
                 'landscape': False,
                 'displayHeaderFooter': False,
