@@ -1,6 +1,8 @@
-以下のコマンドで仮想環境アクティベート
-``` myenv\Scripts\activate
- ```
+## 以下のコマンドで仮想環境アクティベート
+``` myenv\Scripts\activate ```
+
+## 以下コマンドで、Pythonファイルを実行
+ ``` py tennis_book.py ```
 
 ## 以下インストール
 ``` pip install pandas openpyxl jpholiday selenium webdriver_manager ```
